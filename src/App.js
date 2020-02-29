@@ -86,10 +86,10 @@ class App extends React.Component {
         return (
             <div className="app">
                 <Toolbar onSideDrawerToggle={this.handleSideDrawerToggle}/> 
+                <SideDrawer show={this.state.sideDrawerOpen}/>
+                {backdrop}
                 <main className="main">
-                    <SideDrawer show={this.state.sideDrawerOpen}/>
-                    {backdrop}
-                    <Games />
+                    <Games/>
                 </main>
             </div>
         );
