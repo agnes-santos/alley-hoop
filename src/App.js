@@ -56,17 +56,47 @@ class Games extends React.Component {
 }
 
 
-function App() {
-  return (
-    <div className="app">
-        <Toolbar /> 
-        <SideDrawer />
-        <Backdrop />
-        <main className="main">
-            <Games />
-        </main>
-    </div>
-  );
+class App extends React.Component {
+
+    state = {
+        sideDrawerOpen: false
+    };
+
+    handleSideDrawerToggle = () => {
+        console.log('inHandleSideDrawer', this.state.sideDrawerOpen);
+        this.setState((prevState) => {
+            console.log(prevState);
+            return {sideDrawerOpen: !prevState.sideDrawerOpen};
+        });
+
+    }
+
+    handleBackdropClick = () => {
+        this.setState({
+            sideDrawerOpen: false
+        });
+    }
+
+    render() {
+        let sideDrawer;
+        let backdrop;
+        
+        if(this.state.sideDrawerOpen) {
+          sideDrawer = <SideDrawer />
+          backdrop = <Backdrop onBackdropClick={this.handleBackdropClick}/>
+        }
+        return (
+            <div className="app">
+                <Toolbar onSideDrawerToggle={this.handleSideDrawerToggle}/> 
+                {sideDrawer}
+                {backdrop}
+                <main className="main">
+                    <Games />
+                </main>
+            </div>
+        );
+    }
+
 }
 
 export default App;

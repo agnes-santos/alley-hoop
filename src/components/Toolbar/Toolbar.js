@@ -7,7 +7,7 @@ const toolbar = props => (
     <header className="toolbar">
         <nav className="toolbar-navigation">
             <div>
-                <DrawerToggleButton />
+                <DrawerToggleButton onSideDrawerToggle={props.onSideDrawerToggle}/>
             </div>
             <div className="toolbar-logo"><a href="/">Out of Bounds</a></div>
             <div className="spacer" />
