@@ -1,6 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Toolbar from './components/Toolbar/Toolbar';
 
 class Games extends React.Component {
   constructor(props){
@@ -57,7 +57,10 @@ class Games extends React.Component {
 function App() {
   return (
     <div className="App">
-      <Games />
+        <Toolbar /> 
+        <main className="main">
+            <Games />
+        </main>
     </div>
   );
 }
