@@ -30,11 +30,20 @@
     text-decoration: none;
     font-size: 1.25em;
 }
+
 .toolbar-current-page{
     font-weight: bold;
     text-transform: uppercase;
 }
+
 .toolbar-timezone {
     display: flex;
 
+}
+
+/* Hides timezone on the toolbar if mobile */
+@media (max-width: 768px) {
+    .toolbar-timezone {
+        display: none;
+    }
 }
