@@ -78,7 +78,6 @@ class App extends React.Component {
     }
 
     render() {
-        let sideDrawer;
         let backdrop;
         
         if(this.state.sideDrawerOpen) {
@@ -87,9 +86,9 @@ class App extends React.Component {
         return (
             <div className="app">
                 <Toolbar onSideDrawerToggle={this.handleSideDrawerToggle}/> 
-                <SideDrawer show={this.state.sideDrawerOpen}/>
-                {backdrop}
                 <main className="main">
+                    <SideDrawer show={this.state.sideDrawerOpen}/>
+                    {backdrop}
                     <Games />
                 </main>
             </div>

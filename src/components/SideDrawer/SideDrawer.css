@@ -3,7 +3,8 @@
     background: #252B2B;
     box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
     position: fixed;
-    top: 0;
+     /* Moved the sidebar below the tool bar*/
+    top: 56px;
     left: 0;
     width: 70%;
     max-width: 400px;
