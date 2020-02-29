@@ -71,3 +71,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
+
+## Resources:
+
+1. The fancy [Hamburgers](https://github.com/jonsuh/hamburgers) by [jonsuh](https://github.com/jonsuh)

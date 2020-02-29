@@ -63,12 +63,9 @@ class App extends React.Component {
     };
 
     handleSideDrawerToggle = () => {
-        console.log('inHandleSideDrawer', this.state.sideDrawerOpen);
         this.setState((prevState) => {
-            console.log(prevState);
             return {sideDrawerOpen: !prevState.sideDrawerOpen};
         });
-
     }
 
     handleBackdropClick = () => {
@@ -80,7 +77,10 @@ class App extends React.Component {
     render() {
         return (
             <div className="app">
-                <Toolbar onSideDrawerToggle={this.handleSideDrawerToggle}/> 
+                <Toolbar 
+                    onSideDrawerToggle={this.handleSideDrawerToggle}
+                    sideDrawerOpen={this.state.sideDrawerOpen}
+                /> 
                 <SideDrawer show={this.state.sideDrawerOpen}/>
                 <Backdrop 
                     onBackdropClick={this.handleBackdropClick}
