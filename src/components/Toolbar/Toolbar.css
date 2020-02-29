@@ -21,6 +21,10 @@
     flex: 1;
 }
 
+.toolbar-logo {
+    margin-left: 1rem;    
+}
+
 .toolbar-logo a {
     color: #f9fbf2;
     text-decoration: none;

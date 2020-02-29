@@ -1,11 +1,14 @@
 import React from 'react';
 
+import DrawerToggleButton from '../SideDrawer/DrawerToggleButton';
 import './Toolbar.css';
 
 const toolbar = props => (
     <header className="toolbar">
         <nav className="toolbar-navigation">
-            <div>=</div>
+            <div>
+                <DrawerToggleButton />
+            </div>
             <div className="toolbar-logo"><a href="/">Out of Bounds</a></div>
             <div className="spacer" />
             
