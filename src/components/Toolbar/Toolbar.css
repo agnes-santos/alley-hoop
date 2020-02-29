@@ -5,7 +5,6 @@
     width: 100%;
     background: #080f0f;
     height: 56px;
-    color: #f9fbf2;
 }
 
 .toolbar-navigation {
@@ -26,7 +25,6 @@
 }
 
 .toolbar-logo a {
-    color: #f9fbf2;
     text-decoration: none;
     font-size: 1.25em;
 }
@@ -38,7 +36,6 @@
 
 .toolbar-timezone {
     display: flex;
-
 }
 
 /* Hides timezone on the toolbar if mobile */
