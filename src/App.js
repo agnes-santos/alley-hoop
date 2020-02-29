@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 import Toolbar from './components/Toolbar/Toolbar';
+import SideDrawer from './components/SideDrawer/SideDrawer';
+import Backdrop from './components/Backdrop/Backdrop';
 
 class Games extends React.Component {
   constructor(props){
@@ -56,8 +58,10 @@ class Games extends React.Component {
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
         <Toolbar /> 
+        <SideDrawer />
+        <Backdrop />
         <main className="main">
             <Games />
         </main>
