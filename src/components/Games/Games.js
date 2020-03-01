@@ -2,6 +2,8 @@ import React from 'react';
 
 import axios from 'axios';
 
+import nbaLogos from '../NBALogos/NBALogos';
+
 export default class Games extends React.Component {
 
     constructor(props) {
@@ -24,11 +26,11 @@ export default class Games extends React.Component {
 
             .then((NBAdate) => {
 
-                console.log('NBAdate', NBAdate);
+                // console.log('NBAdate', NBAdate);
                 axios.get('http://data.nba.com/data/5s/json/cms/noseason/scoreboard/' + NBAdate + '/games.json')
                     .then((result) => {
                         // handle success
-                        console.log(result.data.sports_content.games.game);
+                        // console.log(result.data.sports_content.games.game);
                         this.setState({ 
                             error: null,
                             games: result.data.sports_content.games.game,
@@ -61,8 +63,19 @@ export default class Games extends React.Component {
             return (
                 this.state.games.map((game, index) => {
                     
+                    const Home = nbaLogos[game.home.team_key.toLowerCase()];
+                    const Visitor = nbaLogos[game.visitor.team_key.toLowerCase()];
+                    
                     return (
-                        <div key={game.id}>{game.period_time.period_status} {game.period_time.game_clock} | {game.home.team_key} {game.home.score} - {game.visitor.team_key} {game.visitor.score}</div>
+                        <div key={game.id} >
+                            
+                            <Home size={75}/>
+                            {game.home.score}
+                            {game.period_time.period_status}
+                            {game.period_time.game_clock}
+                            {game.visitor.score}
+                            <Visitor size={75}/>
+                        </div>
                     );
                 })
             )
