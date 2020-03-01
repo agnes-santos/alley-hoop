@@ -1,8 +1,17 @@
 .app {
     height: 100%;
+    /* Centers the main */
+    display: flex;
+    justify-content: center;
 }
 
 .main {
     margin-top: 86px;
-    text-align: center;
+    /* Slims and centers the main content width */
+    width: 768px;
+    justify-content: center;
+    /* Displays the cards in a row */
+    display: flex;
+    /* Wraps the cards within the main width */
+    flex-wrap: wrap;
 }

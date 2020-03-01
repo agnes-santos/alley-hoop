@@ -2,6 +2,7 @@ import React from 'react';
 
 import axios from 'axios';
 
+import './Games.css';
 import nbaLogos from '../NBALogos/NBALogos';
 
 export default class Games extends React.Component {
@@ -25,7 +26,7 @@ export default class Games extends React.Component {
             })
 
             .then((NBAdate) => {
-
+                // NBAdate = '20200229';
                 // console.log('NBAdate', NBAdate);
                 axios.get('http://data.nba.com/data/5s/json/cms/noseason/scoreboard/' + NBAdate + '/games.json')
                     .then((result) => {
@@ -62,19 +63,21 @@ export default class Games extends React.Component {
         } else {
             return (
                 this.state.games.map((game, index) => {
-                    
+
                     const Home = nbaLogos[game.home.team_key.toLowerCase()];
                     const Visitor = nbaLogos[game.visitor.team_key.toLowerCase()];
                     
                     return (
-                        <div key={game.id} >
-                            
-                            <Home size={75}/>
-                            {game.home.score}
-                            {game.period_time.period_status}
-                            {game.period_time.game_clock}
-                            {game.visitor.score}
-                            <Visitor size={75}/>
+                        <div key={game.id} 
+                            className="card game"
+                        >
+
+                            <Home size={80}/>
+                            <div>{game.home.score}</div>
+                            <div>{game.period_time.period_status}</div>
+                            <div>{game.period_time.game_clock}</div>
+                            <div>{game.visitor.score}</div>
+                            <Visitor size={80} />
                         </div>
                     );
                 })
