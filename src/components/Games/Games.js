@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import './Games.css';
 import nbaLogos from '../NBALogos/NBALogos';
+import '../NBALogos/NBALogos.css';
 
 export default class Games extends React.Component {
 
@@ -18,6 +19,11 @@ export default class Games extends React.Component {
        
     componentDidMount() {
 
+        // Pre-loads the NBA logos svg
+        Object.keys(nbaLogos).forEach(function(team) {
+            new Image().src = nbaLogos[team];
+        });
+       
         // Gets the 
         axios.get('http://data.nba.net/10s/prod/v3/today.json')
             .then((today) => {
@@ -70,8 +76,6 @@ export default class Games extends React.Component {
             return (
                 this.state.games.map((game, index) => {
 
-                    const Hteam = nbaLogos[game.hTeam.triCode.toLowerCase()];
-                    const Vteam = nbaLogos[game.vTeam.triCode.toLowerCase()];
                     // const status = game.isGameActivated 
                     // 'Q'+ game.period.current + ' - ' + game.clock
                     const localStatTime = new Date(game.startTimeUTC).toLocaleTimeString(
@@ -81,11 +85,23 @@ export default class Games extends React.Component {
                         <div key={game.gameId} 
                             className="card game"
                         >
-                            <Hteam size={80}/>
+                            <div>
+                                <img alt={game.hTeam.triCode} 
+                                    className="svg-shadow" 
+                                    height="80"
+                                    src={nbaLogos[game.hTeam.triCode]} 
+                                />
+                            </div>
                             <div>{game.hTeam.score}</div>
                             <div>{localStatTime}</div>
                             <div>{game.vTeam.score}</div>
-                            <Vteam size={80} />
+                            <div>
+                                <img alt={game.vTeam.triCode} 
+                                    className="svg-shadow" 
+                                    height="80"
+                                    src={nbaLogos[game.vTeam.triCode]} 
+                                />
+                            </div>
                         </div>
                     );
                 })
