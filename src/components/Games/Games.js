@@ -6,6 +6,8 @@ import './Games.css';
 import nbaLogos from '../NBALogos/NBALogos';
 import '../NBALogos/NBALogos.css';
 
+import Loader from '../Loader/Loader';
+
 export default class Games extends React.Component {
 
     constructor(props) {
@@ -28,7 +30,7 @@ export default class Games extends React.Component {
         axios.get('http://data.nba.net/10s/prod/v3/today.json')
             .then((today) => {
                 // handle success
-                console.log(today.data.links.todayScoreboard);
+                // console.log(today.data.links.todayScoreboard);
                 // return today.data.links.todayScoreboard;
                 return '/prod/v2/20200303/scoreboard.json'
             }).catch((error) => {
@@ -66,7 +68,7 @@ export default class Games extends React.Component {
     render() {
         if (this.state.isLoading) {
 
-            return <div>Loading...</div>;
+            return <div><Loader /></div>;
 
         } else if (this.state.error) {
             
