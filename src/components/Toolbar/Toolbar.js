@@ -15,7 +15,7 @@ const toolbar = props => (
             
             <div className="toolbar-current-page">Scores</div>
 
-            <div className="toolbar-timezone">{Intl.DateTimeFormat().resolvedOptions().timeZone} Timezone</div>
+            <div className="toolbar-timezone">All times shown are in {Intl.DateTimeFormat().resolvedOptions().timeZone} Timezone</div>
         </nav>
     </header>
 );

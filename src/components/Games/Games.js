@@ -19,22 +19,28 @@ export default class Games extends React.Component {
     componentDidMount() {
 
         // Gets the 
-        axios.get('http://data.nba.net/data/10s/prod/v1/calendar.json')
-            .then((calendar) => {
+        axios.get('http://data.nba.net/10s/prod/v3/today.json')
+            .then((today) => {
                 // handle success
-                return calendar.data._internal.pubDateTime.split(' ')[0].replace(/-/g, "");
+                console.log(today.data.links.todayScoreboard);
+                // return today.data.links.todayScoreboard;
+                return '/prod/v2/20200303/scoreboard.json'
+            }).catch((error) => {
+                // console.log(error);
+                this.setState({
+                    error: error.toString()
+                });
             })
-
-            .then((NBAdate) => {
-                // NBAdate = '20200229';
+            .then((todayScoreboard) => {
+                // NBAdate = '20200303';
                 // console.log('NBAdate', NBAdate);
-                axios.get('http://data.nba.com/data/5s/json/cms/noseason/scoreboard/' + NBAdate + '/games.json')
-                    .then((result) => {
+                axios.get('http://data.nba.com/data/' + todayScoreboard)
+                    .then((todayGames) => {
                         // handle success
-                        // console.log(result.data.sports_content.games.game);
+                        console.log(todayGames.data.games);
                         this.setState({ 
                             error: null,
-                            games: result.data.sports_content.games.game,
+                            games: todayGames.data.games,
                             isLoading: false
                         });
                     })
@@ -64,20 +70,22 @@ export default class Games extends React.Component {
             return (
                 this.state.games.map((game, index) => {
 
-                    const Home = nbaLogos[game.home.team_key.toLowerCase()];
-                    const Visitor = nbaLogos[game.visitor.team_key.toLowerCase()];
-                    
+                    const Hteam = nbaLogos[game.hTeam.triCode.toLowerCase()];
+                    const Vteam = nbaLogos[game.vTeam.triCode.toLowerCase()];
+                    // const status = game.isGameActivated 
+                    // 'Q'+ game.period.current + ' - ' + game.clock
+                    const localStatTime = new Date(game.startTimeUTC).toLocaleTimeString(
+                        [], {hour: '2-digit', minute:'2-digit'}
+                    );
                     return (
-                        <div key={game.id} 
+                        <div key={game.gameId} 
                             className="card game"
                         >
-
-                            <Home size={80}/>
-                            <div>{game.home.score}</div>
-                            <div>{game.period_time.period_status}</div>
-                            <div>{game.period_time.game_clock}</div>
-                            <div>{game.visitor.score}</div>
-                            <Visitor size={80} />
+                            <Hteam size={80}/>
+                            <div>{game.hTeam.score}</div>
+                            <div>{localStatTime}</div>
+                            <div>{game.vTeam.score}</div>
+                            <Vteam size={80} />
                         </div>
                     );
                 })

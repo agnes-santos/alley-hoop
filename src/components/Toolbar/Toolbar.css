@@ -36,7 +36,8 @@
 }
 
 .toolbar-timezone {
-    font: italic;
+    font-style: italic;
+    font-size: 0.9rem;
 }
 
 /* Hides timezone on the toolbar if mobile */
