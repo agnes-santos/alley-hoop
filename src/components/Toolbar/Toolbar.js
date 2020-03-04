@@ -11,7 +11,7 @@ const toolbar = props => (
                 />
         <nav className="toolbar-navigation">
     
-            <div className="toolbar-logo"><a href="/">Out of Bounds</a></div>
+            <div className="toolbar-logo"><a href="/">Alley Hoop</a></div>
             
             <div className="toolbar-current-page">Scores</div>
 
