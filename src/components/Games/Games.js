@@ -78,11 +78,32 @@ export default class Games extends React.Component {
             return (
                 this.state.games.map((game, index) => {
 
-                    // const status = game.isGameActivated 
-                    // 'Q'+ game.period.current + ' - ' + game.clock
-                    const localStatTime = new Date(game.startTimeUTC).toLocaleTimeString(
-                        [], {hour: '2-digit', minute:'2-digit'}
-                    );
+                    let status;
+                        
+                    if(game.isGameActivated) {
+
+                        if(game.period.isHalftime) {
+
+                            status = 'HALFTIME';
+
+                        } else if (game.period.isEndOfPeriod) {
+                        
+                            status = 'END OF Q'+ game.period.current;
+                        
+                        } else {
+                            
+                            status = 'Q'+ game.period.current + ' - ' + 
+                                (game.clock ? game.clock : '0:00');
+                        
+                        }
+                        
+                    } else {
+                        
+                        status = new Date(game.startTimeUTC).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+                    
+                    }
+
+
                     return (
                         <div key={game.gameId} 
                             className="card game"
@@ -94,9 +115,9 @@ export default class Games extends React.Component {
                                     src={nbaLogos[game.hTeam.triCode]} 
                                 />
                             </div>
-                            <div>{game.hTeam.score}</div>
-                            <div>{localStatTime}</div>
-                            <div>{game.vTeam.score}</div>
+                            <div>{game.isGameActivated && game.hTeam.score === '0' ? '-' : game.hTeam.score}</div>
+                            <div>{status}</div>
+                            <div>{game.isGameActivated && game.vTeam.score === '0' ? '-' : game.vTeam.score}</div>
                             <div>
                                 <img alt={game.vTeam.triCode} 
                                     className="svg-shadow" 
