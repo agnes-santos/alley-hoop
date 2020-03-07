@@ -13,7 +13,7 @@ const toolbar = props => (
     
             <div className="toolbar-logo"><a href="/">Alley Hoop</a></div>
             
-            <div className="toolbar-current-page">Scores</div>
+            <div className="toolbar-current-page">Games</div>
 
             <div className="toolbar-timezone">All times shown are in {Intl.DateTimeFormat().resolvedOptions().timeZone} Timezone</div>
         </nav>

@@ -18,3 +18,25 @@
     /* vertically aligns center the game contents */
     align-items: center;
 }
+
+.game-quarter {
+    text-align: center;
+}
+
+.quarter {
+    font-size: 16px;
+}
+
+.clock {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+/* Animations */
+.fade-in {
+    opacity: 0;
+}
+.fade-in.visible {
+    transition: opacity 1s ease-in;
+    opacity: 1;
+}

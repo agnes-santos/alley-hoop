@@ -2,11 +2,13 @@ import React from 'react';
 
 import axios from 'axios';
 
-import './Games.css';
-import nbaLogos from '../NBALogos/NBALogos';
-import '../NBALogos/NBALogos.css';
+import nbaTeams from '../NBAteams/NBAteams';
+import '../NBAteams/NBAteams.css';
 
 import Loader from '../Loader/Loader';
+import Game from './Game';
+
+// import ReactTimeout from 'react-timeout';
 
 export default class Games extends React.Component {
 
@@ -15,53 +17,98 @@ export default class Games extends React.Component {
         this.state = {
             error: null,
             games: [],
-            isLoading: true
+            isLoading: true,
+            todayScoreboard: null
         };
     }
-       
-    componentDidMount() {
 
-        // Pre-loads the NBA logos svg
-        Object.keys(nbaLogos).forEach(function(team) {
-            new Image().src = nbaLogos[team];
-        });
-       
-        // Gets the 
-        axios.get('http://data.nba.net/10s/prod/v3/today.json')
-            .then((today) => {
+    async getToday() {
+        console.log("today");
+        return axios.get('http://data.nba.net/10s/prod/v3/today.json')
+            .then(today => {
                 // handle success
                 // console.log(today.data.links.todayScoreboard);
-                // return today.data.links.todayScoreboard;
-                return '/prod/v2/20200303/scoreboard.json'
-            }).catch((error) => {
-                // console.log(error);
+                this.setState({
+                    todayScoreboard: today.data.links.todayScoreboard
+                });
+                this.getTodayScoreboard();
+
+            }).catch(error => {
+                // console.log('today', error);
                 this.setState({
                     error: error.toString()
                 });
-            })
-            .then((todayScoreboard) => {
-                // NBAdate = '20200303';
-                // console.log('NBAdate', NBAdate);
-                axios.get('http://data.nba.com/data/' + todayScoreboard)
-                    .then((todayGames) => {
-                        // handle success
-                        console.log(todayGames.data.games);
-                        this.setState({ 
-                            error: null,
-                            games: todayGames.data.games,
-                            isLoading: false
-                        });
-                    })
-                    .catch((error) => {
-                        // handle error
-                        console.log(error);
-                        this.setState({ 
-                            error: error.toString(),
-                            isLoading: false
-                        });
-
-                    });
             });
+    }
+
+    async getTodayScoreboard() {
+        
+        // NBAdate = '20200303';
+        // console.log('NBAdate', NBAdate);
+        try {
+            const todayGames = await axios.get('http://data.nba.com/data/' + this.state.todayScoreboard);
+            // handle success
+            console.log(todayGames.data.games);
+            this.setState({
+                error: null,
+                games: todayGames.data.games,
+                isLoading: false
+            });
+        }
+        catch (error) {
+            // Error
+            // console.log('errorTodayScore',error);
+            if (error.response) {
+                // The request was made and the server responded with a status code
+                // that falls out of the range of 2xx
+                // console.log(error.response.data);
+                // console.log(error.response.status);
+                // console.log(error.response.headers);
+                if(error.response.status === 404 && !this.state.todayScoreboard) {
+                    
+                    this.getToday();
+                
+                }
+            }
+            else if (error.request) {
+                // The request was made but no response was received
+                // `error.request` is an instance of XMLHttpRequest in the 
+                // browser and an instance of
+                // http.ClientRequest in node.js
+                console.log('error.request', error.request);
+                this.setState({
+                    error: error.toString() + ' - Try enabling CORS',
+                    isLoading: false
+                });
+            }
+            else {
+                // Something happened in setting up the request that triggered an Error
+                console.log('Error', error.message);
+                this.setState({
+                    error: error.toString(),
+                    isLoading: false
+                });
+            }
+            
+            return error;
+        }
+        
+    }
+
+     
+    componentDidMount() {
+
+        // Pre-loads the NBA logos svg
+        Object.keys(nbaTeams).forEach(function(team) {
+            new Image().src = nbaTeams[team];
+        });
+       
+        // Gets the scoreboard for the day
+        this.getTodayScoreboard();
+
+        // Gets scores every 10s
+        // setInterval(() => this.getTodayScoreboard(), 10000);
+        
     }
 
     
@@ -76,56 +123,15 @@ export default class Games extends React.Component {
 
         } else {
             return (
-                this.state.games.map((game, index) => {
-
-                    let status;
-                        
-                    if(game.isGameActivated) {
-
-                        if(game.period.isHalftime) {
-
-                            status = 'HALFTIME';
-
-                        } else if (game.period.isEndOfPeriod) {
-                        
-                            status = 'END OF Q'+ game.period.current;
-                        
-                        } else {
-                            
-                            status = 'Q'+ game.period.current + ' - ' + 
-                                (game.clock ? game.clock : '0:00');
-                        
-                        }
-                        
-                    } else {
-                        
-                        status = new Date(game.startTimeUTC).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-                    
-                    }
-
+                this.state.games.map((game) => {
 
                     return (
-                        <div key={game.gameId} 
-                            className="card game"
-                        >
-                            <div>
-                                <img alt={game.hTeam.triCode} 
-                                    className="svg-shadow" 
-                                    height="80"
-                                    src={nbaLogos[game.hTeam.triCode]} 
-                                />
-                            </div>
-                            <div>{game.isGameActivated && game.hTeam.score === '0' ? '-' : game.hTeam.score}</div>
-                            <div>{status}</div>
-                            <div>{game.isGameActivated && game.vTeam.score === '0' ? '-' : game.vTeam.score}</div>
-                            <div>
-                                <img alt={game.vTeam.triCode} 
-                                    className="svg-shadow" 
-                                    height="80"
-                                    src={nbaLogos[game.vTeam.triCode]} 
-                                />
-                            </div>
-                        </div>
+                        <Game 
+                            game={game} 
+                            hTeam={nbaTeams[game.hTeam.triCode]}
+                            vTeam={nbaTeams[game.vTeam.triCode]}
+                            key={game.gameId}
+                        />
                     );
                 })
             )
