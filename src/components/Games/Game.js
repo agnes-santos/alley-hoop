@@ -18,7 +18,7 @@ const game = props => {
 
             <div>
                 {props.game.isGameActivated && !props.game.hTeam.score 
-                    ? '-' 
+                    ? '-'   
                     : props.game.hTeam.score}
             </div>
 
