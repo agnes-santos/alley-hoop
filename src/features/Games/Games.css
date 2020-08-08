@@ -31,3 +31,15 @@
   font-size: 14px;
   margin: 5px 0;
 }
+
+.score {
+  font-size: larger;
+  font-weight: bolder;
+}
+
+.slideUpContainer {
+  /* Stabalizes slide positions in place */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

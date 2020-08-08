@@ -1,24 +1,33 @@
 import React from 'react';
 
 const status = (props) => {
-  if (props.game.isGameActivated) {
-    if (props.game.period.isHalftime) {
-      return 'Halftime';
-    } else if (props.game.period.isEndOfPeriod) {
-      return 'End of Q' + props.game.period.current;
+  const {
+    game: {
+      clock,
+      isGameActivated,
+      period: { isHalftime, isEndOfPeriod, current, maxRegular },
+      startTimeUTC,
+    },
+  } = props;
+
+  if (isGameActivated) {
+    if (isHalftime) {
+      return 'HALFTIME';
+    } else if (isEndOfPeriod) {
+      return 'END of Q' + current;
     } else {
       return (
         <div className="game-quarter">
-          <div className="quarter">Q{props.game.period.current}</div>
-          <div className="clock">{props.game.clock ? props.game.clock : '0:00'}</div>
+          <div className="quarter">Q{current}</div>
+          <div className="clock">{clock ? clock : '0:00'}</div>
         </div>
       );
     }
   } else {
-    if (props.game.period.current >= props.game.period.maxRegular) {
-      return 'Final';
+    if (current >= maxRegular) {
+      return 'FINAL';
     } else {
-      return new Date(props.game.startTimeUTC).toLocaleTimeString([], {
+      return new Date(startTimeUTC).toLocaleTimeString([], {
         hour: '2-digit',
         minute: '2-digit',
       });
