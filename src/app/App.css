@@ -1,0 +1,22 @@
+.app {
+  height: 100%;
+  /* Centers the main */
+  display: flex;
+  justify-content: center;
+}
+
+.main {
+  margin-top: 86px;
+  /* Slims and centers the main content width */
+  width: 768px;
+  justify-content: center;
+  /* Displays the cards in a row */
+  display: flex;
+  /* Wraps the cards within the main width */
+  flex-wrap: wrap;
+}
+
+.svg-shadow {
+  -webkit-filter: drop-shadow(0px 8px 5px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0px 8px 5px rgba(0, 0, 0, 0.2));
+}

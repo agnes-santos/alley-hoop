@@ -1,26 +1,20 @@
 import React from 'react';
 import './Hamburger.css';
 
-const Hamburger = props => {
+const Hamburger = (props) => {
+  let burgerClass = ['hamburger hamburger--spin js-hamburger'];
 
-    let burgerClass = ['hamburger hamburger--spin js-hamburger'];
-    
-    if(props.sideDrawerOpen) {
-        burgerClass = ['hamburger hamburger--spin js-hamburger', 'is-active'];
-    }
+  if (props.sideDrawerOpen) {
+    burgerClass = ['hamburger hamburger--spin js-hamburger', 'is-active'];
+  }
 
-    return (
-        <button 
-            className={burgerClass.join(' ')} 
-            type="button" 
-            onClick={props.onSideDrawerToggle}
-        >
-            <span className="hamburger-box">
-                <span className="hamburger-inner"></span>
-            </span>
-        </button>
-    );
-
+  return (
+    <button className={burgerClass.join(' ')} type="button" onClick={props.onSideDrawerToggle}>
+      <span className="hamburger-box">
+        <span className="hamburger-inner"></span>
+      </span>
+    </button>
+  );
 };
 
 export default Hamburger;

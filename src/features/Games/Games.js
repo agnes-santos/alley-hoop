@@ -1,19 +1,17 @@
-import React from "react";
+import React from 'react';
 
-import nbaTeams from "../NBAteams/NBAteams";
-import "../NBAteams/NBAteams.css";
+import nbaTeams from '../../utils/nbaTeams';
+import db from '../../utils/db.js';
 
-import Loader from "../Loader/Loader";
-import Game from "./Game";
-
-import db from "../db.js";
+import Loader from '../../components/Loader/Loader';
+import Game from './Game';
 
 export default class Games extends React.Component {
   constructor(props) {
     super(props);
 
     // Loads FB Realtime database
-    this.games = db.ref().child("gamesToday");
+    this.games = db.ref().child('gamesToday');
 
     this.state = {
       error: null,
@@ -29,7 +27,7 @@ export default class Games extends React.Component {
     });
 
     // Sets games to realtime data in firebase
-    this.games.on("value", (snap) => {
+    this.games.on('value', (snap) => {
       this.setState({
         error: null,
         games: snap.val(),

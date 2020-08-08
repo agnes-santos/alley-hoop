@@ -1,7 +1,7 @@
-import React from "react";
-import "./Games.css";
-import Status from "./Status";
-import Score from "./Score";
+import React from 'react';
+import './Games.css';
+import Status from './Status';
+import Score from './Score';
 
 const game = (props) => {
   return (
@@ -16,10 +16,7 @@ const game = (props) => {
       </div>
 
       <div>
-        <Score
-          isGameActivated={props.game.isGameActivated}
-          team={props.game.hTeam}
-        />
+        <Score isGameActivated={props.game.isGameActivated} team={props.game.hTeam} />
       </div>
 
       <div>
@@ -27,10 +24,7 @@ const game = (props) => {
       </div>
 
       <div>
-        <Score
-          isGameActivated={props.game.isGameActivated}
-          team={props.game.vTeam}
-        />
+        <Score isGameActivated={props.game.isGameActivated} team={props.game.vTeam} />
       </div>
 
       <div>

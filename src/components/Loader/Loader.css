@@ -1,96 +1,95 @@
 /* Bouncing Ball */
-.loader-container{
-    height: 100%;
-    width: 75px;
+.loader-container {
+  height: 100%;
+  width: 75px;
 }
 
-.loader-ball-container{
-    width:50px;
-    height: 150px;
+.loader-ball-container {
+  width: 50px;
+  height: 150px;
 }
 
 .loader-ball {
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    background: #ab2346;
-    position: absolute;
-    border: 3px solid  #1E2424; /* #1E2424;*/
-    overflow: hidden;
-    animation: bounce 0.5s; 
-    animation-direction: alternate; 
-    animation-timing-function: cubic-bezier(.5, 0.05, 1, .5); 
-    animation-iteration-count: infinite; 
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background: #ab2346;
+  position: absolute;
+  border: 3px solid #1e2424; /* #1E2424;*/
+  overflow: hidden;
+  animation: bounce 0.5s;
+  animation-direction: alternate;
+  animation-timing-function: cubic-bezier(0.5, 0.05, 1, 0.5);
+  animation-iteration-count: infinite;
 }
 
 /* The cross straight lines */
 .loader-ball-line {
-    position: absolute;
-    width: calc(100% + 2px);
-    height: 3px;
-    background: #1E2424;
+  position: absolute;
+  width: calc(100% + 2px);
+  height: 3px;
+  background: #1e2424;
+}
+
+/* Horizontal line */
+.loader-ball-line:nth-child(1) {
+  top: 50%;
+  margin-top: -2px;
+  background: #1e2424;
+}
+
+/* Upper curve */
+.loader-ball-line:nth-child(2) {
+  width: 85%;
+  height: 40%;
+  transform: rotate(180deg);
+  border-radius: 70%;
+  background: transparent;
+  border: 3px solid #1e2424;
+  top: -10px;
+}
+
+/* Lower curve */
+.loader-ball-line:nth-child(3) {
+  width: 85%;
+  height: 40%;
+  transform: rotate(180deg);
+  border-radius: 50%;
+  background: transparent;
+  border: 3px solid #1e2424;
+  bottom: -10px;
+}
+
+/* Vertical line of the ball */
+.loader-ball-line:nth-child(4) {
+  top: 50%;
+  margin-top: -2px;
+  transform: rotate(90deg);
+}
+
+@keyframes bounce {
+  from {
+    transform: translate3d(0, 0, 0) rotate(0deg);
   }
-
-  /* Horizontal line */
-  .loader-ball-line:nth-child(1) {
-    top: 50%;
-    margin-top: -2px;
-    background: #1E2424;
+  to {
+    transform: translate3d(0, 100px, 0) rotate(90deg);
   }
-
-  /* Upper curve */
-  .loader-ball-line:nth-child(2) {
-    width: 85%;
-    height: 40%;
-    transform: rotate(180deg);
-    border-radius: 70%;
-    background: transparent;
-    border: 3px solid #1E2424;
-    top: -10px;
-  }
-
-  /* Lower curve */
-  .loader-ball-line:nth-child(3) {
-    width: 85%;
-    height: 40%;
-    transform: rotate(180deg);
-    border-radius: 50%;
-    background: transparent;
-    border: 3px solid #1E2424;
-    bottom: -10px;
-  }
-
-  /* Vertical line of the ball */
-  .loader-ball-line:nth-child(4) {
-    top: 50%;
-    margin-top: -2px;
-    transform: rotate(90deg);
-  }
-
-  @keyframes bounce { 
-    from { 
-        transform: translate3d(0, 0, 0) rotate(0deg); 
-    } 
-    to { 
-        transform: translate3d(0, 100px, 0) rotate(90deg); 
-
-    } 
-} 
+}
 
 /* Animating ellipses */
 .loading:after {
-    overflow: hidden;
-    display: inline-block;
-    vertical-align: bottom;
-    -webkit-animation: ellipsis steps(4,end) 3100ms infinite;      
-    animation: ellipsis steps(4,end) 3100ms infinite;
-    content: "\2026 \00a0"; /* ascii code for the ellipsis character */
-    width: 0px;
-    white-space:pre;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+  -webkit-animation: ellipsis steps(4, end) 3100ms infinite;
+  animation: ellipsis steps(4, end) 3100ms infinite;
+  content: '\2026 \00a0'; /* ascii code for the ellipsis character */
+  width: 0px;
+  white-space: pre;
+}
+
+@keyframes ellipsis {
+  to {
+    width: 15px;
   }
-  
-  @keyframes ellipsis {
-    to {
-      width: 15px;    
-    }
-  }
+}
