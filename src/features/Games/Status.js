@@ -1,9 +1,12 @@
 import React from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { slideUpVariants } from '../../utils/variants';
 
 const status = (props) => {
   const {
     game: {
       clock,
+      gameId,
       isGameActivated,
       period: { isHalftime, isEndOfPeriod, current, maxRegular },
       startTimeUTC,
@@ -14,12 +17,24 @@ const status = (props) => {
     if (isHalftime) {
       return 'HALFTIME';
     } else if (isEndOfPeriod) {
-      return 'END of Q' + current;
+      return 'END OF Q' + current;
     } else {
       return (
         <div className="game-quarter">
           <div className="quarter">Q{current}</div>
-          <div className="clock">{clock ? clock : '0:00'}</div>
+          <div className="slideUpContainer clock">
+            <AnimatePresence initial={false}>
+              <motion.div
+                variants={slideUpVariants}
+                inital="enter"
+                animate="center"
+                exit="exit"
+                key={gameId + clock}
+              >
+                {clock ? clock : '0:00'}
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
       );
     }
