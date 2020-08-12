@@ -21,7 +21,7 @@ const status = (props) => {
     } else {
       return (
         <div className="game-quarter">
-          <div className="quarter">Q{current}</div>
+          <div className="quarter">{current <= maxRegular ? 'Q' + current : 'OT'}</div>
           <div className="slideUpContainer clock">
             <AnimatePresence initial={false}>
               <motion.div
