@@ -1,6 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const { findAllByDisplayValue } = require('@testing-library/react');
 
 module.exports = {
   entry: './src/index.js',
@@ -45,6 +48,29 @@ module.exports = {
         test: /\.css$/i,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
+    ],
+  },
+  // Minifies JS and CSS
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        // Ensures modern browsers compatibility
+        terserOptions: {
+          compress: {
+            comparisons: false,
+          },
+          mangle: {
+            safari10: true,
+          },
+          output: {
+            comments: false,
+            ascii_only: true,
+          },
+          warnings: false,
+        },
+      }),
+      new OptimizeCSSAssetsPlugin(),
     ],
   },
   resolve: {
