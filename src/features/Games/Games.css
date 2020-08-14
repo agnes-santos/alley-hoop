@@ -1,9 +1,8 @@
 .card {
   background: #323737;
-  padding: 10px;
   width: 100%;
-  margin: 10px 10px;
-  border-radius: 8px;
+  margin: 15px;
+  border-radius: 53px;
   /* Shadows */
   -webkit-box-shadow: 0px 8px 5px 0px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0px 8px 5px 0px rgba(0, 0, 0, 0.1);
@@ -11,12 +10,24 @@
 }
 
 .game {
-  max-width: 340px;
+  max-width: 380px;
   display: flex;
   /* Distributes the contents across the card */
   justify-content: space-between;
   /* vertically aligns center the game contents */
   align-items: center;
+}
+
+.team-logo {
+  background: #262b2b;
+  height: 85px;
+  width: 85px;
+  padding: 5px;
+  border-radius: 50%;
+  /* Shadows */
+  -webkit-box-shadow: 0px 8px 5px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 8px 5px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 8px 5px 0px rgba(0, 0, 0, 0.1);
 }
 
 .status {
@@ -35,11 +46,12 @@
 }
 
 .score {
+  padding: 30px;
   font-size: x-large;
   font-weight: bolder;
 }
 
-.slideUpContainer {
+.center-container {
   /* Stabalizes slide positions in place */
   display: flex;
   align-items: center;

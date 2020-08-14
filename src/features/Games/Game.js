@@ -21,11 +21,11 @@ const game = (props) => {
       exit="exit"
       key={game.gameId}
     >
-      <div>
+      <div className="center-container team-logo">
         <img alt={game.hTeam.triCode} className="svg-shadow" height="80" src={hTeam.imgSrc} />
       </div>
 
-      <div className="slideUpContainer score">
+      <div className="center-container">
         <AnimatePresence initial={false}>
           <motion.div
             variants={slideUpVariants}
@@ -33,13 +33,14 @@ const game = (props) => {
             animate="center"
             exit="exit"
             key={game.hTeam.triCode + game.hTeam.score}
+            className="score"
           >
             <Score isGameActivated={game.isGameActivated} score={game.hTeam.score} />
           </motion.div>
         </AnimatePresence>
       </div>
 
-      <div className="slideUpContainer status">
+      <div className="center-container status">
         <AnimatePresence initial={false}>
           <motion.div
             variants={slideUpVariants}
@@ -58,7 +59,7 @@ const game = (props) => {
         </AnimatePresence>
       </div>
 
-      <div className="slideUpContainer score">
+      <div className="center-container">
         <AnimatePresence initial={false}>
           <motion.div
             variants={slideUpVariants}
@@ -66,13 +67,14 @@ const game = (props) => {
             animate="center"
             exit="exit"
             key={game.vTeam.triCode + game.vTeam.score}
+            className="score"
           >
             <Score isGameActivated={game.isGameActivated} score={game.vTeam.score} />
           </motion.div>
         </AnimatePresence>
       </div>
 
-      <div>
+      <div className="center-container team-logo">
         <img alt={game.vTeam.triCode} className="svg-shadow" height="80" src={vTeam.imgSrc} />
       </div>
     </motion.div>

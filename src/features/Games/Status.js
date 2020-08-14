@@ -22,7 +22,7 @@ const status = (props) => {
       return (
         <div className="game-quarter">
           <div className="quarter">{current <= maxRegular ? 'Q' + current : 'OT'}</div>
-          <div className="slideUpContainer clock">
+          <div className="center-container clock">
             <AnimatePresence initial={false}>
               <motion.div
                 variants={slideUpVariants}

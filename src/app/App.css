@@ -8,7 +8,7 @@
 .main {
   margin-top: 86px;
   /* Slims and centers the main content width */
-  width: 768px;
+  width: 840px;
   justify-content: center;
   /* Displays the cards in a row */
   display: flex;
