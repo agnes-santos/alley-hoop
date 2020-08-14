@@ -13,7 +13,7 @@ const status = (props) => {
     },
   } = props;
 
-  if (isGameActivated) {
+  if (isGameActivated && current) {
     if (isHalftime) {
       return 'HALFTIME';
     } else if (isEndOfPeriod) {
