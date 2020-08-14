@@ -1,0 +1,423 @@
+* {
+  color: #f9fbf2;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background: #1e2424;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+}
+
+.app {
+  height: 100%;
+  /* Centers the main */
+  display: flex;
+  justify-content: center;
+}
+
+.main {
+  margin-top: 86px;
+  /* Slims and centers the main content width */
+  width: 768px;
+  justify-content: center;
+  /* Displays the cards in a row */
+  display: flex;
+  /* Wraps the cards within the main width */
+  flex-wrap: wrap;
+}
+
+.svg-shadow {
+  -webkit-filter: drop-shadow(0px 8px 5px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0px 8px 5px rgba(0, 0, 0, 0.2));
+}
+
+/*!
+ * Hamburgers
+ * @description Tasty CSS-animated hamburgers
+ * @author Jonathan Suh @jonsuh
+ * @site https://jonsuh.com/hamburgers
+ * @link https://github.com/jonsuh/hamburgers
+ */
+.hamburger {
+  padding: 15px 15px;
+  display: inline-block;
+  cursor: pointer;
+  transition-property: opacity, filter;
+  transition-duration: 0.15s;
+  transition-timing-function: linear;
+  font: inherit;
+  color: inherit;
+  text-transform: none;
+  background-color: transparent;
+  border: 0;
+  margin: 0;
+  overflow: visible;
+}
+.hamburger:hover {
+  opacity: 0.7;
+}
+.hamburger.is-active:hover {
+  opacity: 0.7;
+}
+.hamburger.is-active .hamburger-inner,
+.hamburger.is-active .hamburger-inner::before,
+.hamburger.is-active .hamburger-inner::after {
+  background-color: #08b2e3;
+}
+
+.hamburger-box {
+  width: 40px;
+  height: 24px;
+  display: inline-block;
+  position: relative;
+}
+
+.hamburger-inner {
+  display: block;
+  top: 50%;
+  margin-top: -2px;
+}
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+  width: 40px;
+  height: 4px;
+  background-color: #08b2e3;
+  border-radius: 4px;
+  position: absolute;
+  transition-property: transform;
+  transition-duration: 0.15s;
+  transition-timing-function: ease;
+}
+.hamburger-inner::before,
+.hamburger-inner::after {
+  content: '';
+  display: block;
+}
+.hamburger-inner::before {
+  top: -10px;
+}
+.hamburger-inner::after {
+  bottom: -10px;
+}
+
+/*
+   * Spin
+   */
+.hamburger--spin .hamburger-inner {
+  transition-duration: 0.22s;
+  transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+.hamburger--spin .hamburger-inner::before {
+  transition: top 0.1s 0.25s ease-in, opacity 0.1s ease-in;
+}
+.hamburger--spin .hamburger-inner::after {
+  transition: bottom 0.1s 0.25s ease-in, transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.hamburger--spin.is-active .hamburger-inner {
+  transform: rotate(225deg);
+  transition-delay: 0.12s;
+  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.hamburger--spin.is-active .hamburger-inner::before {
+  top: 0;
+  opacity: 0;
+  transition: top 0.1s ease-out, opacity 0.1s 0.12s ease-out;
+}
+.hamburger--spin.is-active .hamburger-inner::after {
+  bottom: 0;
+  transform: rotate(-90deg);
+  transition: bottom 0.1s ease-out, transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+/*
+     * Spin Reverse
+     */
+.hamburger--spin-r .hamburger-inner {
+  transition-duration: 0.22s;
+  transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+.hamburger--spin-r .hamburger-inner::before {
+  transition: top 0.1s 0.25s ease-in, opacity 0.1s ease-in;
+}
+.hamburger--spin-r .hamburger-inner::after {
+  transition: bottom 0.1s 0.25s ease-in, transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.hamburger--spin-r.is-active .hamburger-inner {
+  transform: rotate(-225deg);
+  transition-delay: 0.12s;
+  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.hamburger--spin-r.is-active .hamburger-inner::before {
+  top: 0;
+  opacity: 0;
+  transition: top 0.1s ease-out, opacity 0.1s 0.12s ease-out;
+}
+.hamburger--spin-r.is-active .hamburger-inner::after {
+  bottom: 0;
+  transform: rotate(90deg);
+  transition: bottom 0.1s ease-out, transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #080f0f;
+  height: 56px;
+  display: flex;
+  /* Put's the navigation bar on the most top 
+    so we can see the shadow on the sidebar */
+  z-index: 300;
+  -webkit-box-shadow: 0px 8px 5px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 8px 5px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 8px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+.toolbar-navigation {
+  /* Vertically centers texts */
+  width: 100%;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding: 0 0.5rem;
+  justify-content: space-between;
+}
+
+.toolbar-logo a {
+  text-decoration: none;
+  font-size: 1.25em;
+}
+
+.toolbar-current-page {
+  color: #ab2346;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.toolbar-timezone {
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+/* Hides timezone on the toolbar if mobile */
+@media (max-width: 768px) {
+  .toolbar-timezone {
+    display: none;
+  }
+}
+
+.side-drawer {
+  height: 100%;
+  background: #252b2b;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  /* Moved the sidebar below the tool bar*/
+  top: 56px;
+  left: 0;
+  width: 70%;
+  max-width: 400px;
+  z-index: 200;
+  /* Moves along the x axis to the left -100% of 0 */
+  transform: translateX(-100%);
+  transition: transform 0.2s ease-out;
+}
+
+.side-drawer.open {
+  /* Default position */
+  transform: translateX(0);
+}
+
+.side-drawer ul {
+  height: 100%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  /* Used to distribute the content 
+    justify-content: center;*/
+}
+
+.side-drawer li {
+  margin: 0.5rem 0;
+}
+
+.side-drawer a {
+  color: #08b2e3;
+  text-decoration: none;
+  font-size: 1.2 rem;
+}
+
+.backdrop {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  /* Moved the backdrop below the tool bar*/
+  top: 56px;
+  left: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 100px;
+  opacity: 0;
+  transform: opacity 0.8s ease-out;
+}
+
+.backdrop.show {
+  opacity: 1;
+}
+
+/* Bouncing Ball */
+.loader-container {
+  height: 100%;
+  width: 75px;
+}
+
+.loader-ball-container {
+  width: 50px;
+  height: 150px;
+}
+
+.loader-ball {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background: #ab2346;
+  position: absolute;
+  border: 3px solid #1e2424; /* #1E2424;*/
+  overflow: hidden;
+  animation: bounce 0.5s;
+  animation-direction: alternate;
+  animation-timing-function: cubic-bezier(0.5, 0.05, 1, 0.5);
+  animation-iteration-count: infinite;
+}
+
+/* The cross straight lines */
+.loader-ball-line {
+  position: absolute;
+  width: calc(100% + 2px);
+  height: 3px;
+  background: #1e2424;
+}
+
+/* Horizontal line */
+.loader-ball-line:nth-child(1) {
+  top: 50%;
+  margin-top: -2px;
+  background: #1e2424;
+}
+
+/* Upper curve */
+.loader-ball-line:nth-child(2) {
+  width: 85%;
+  height: 40%;
+  transform: rotate(180deg);
+  border-radius: 70%;
+  background: transparent;
+  border: 3px solid #1e2424;
+  top: -10px;
+}
+
+/* Lower curve */
+.loader-ball-line:nth-child(3) {
+  width: 85%;
+  height: 40%;
+  transform: rotate(180deg);
+  border-radius: 50%;
+  background: transparent;
+  border: 3px solid #1e2424;
+  bottom: -10px;
+}
+
+/* Vertical line of the ball */
+.loader-ball-line:nth-child(4) {
+  top: 50%;
+  margin-top: -2px;
+  transform: rotate(90deg);
+}
+
+@keyframes bounce {
+  from {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  to {
+    transform: translate3d(0, 100px, 0) rotate(90deg);
+  }
+}
+
+/* Animating ellipses */
+.loading:after {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+  -webkit-animation: ellipsis steps(4, end) 3100ms infinite;
+  animation: ellipsis steps(4, end) 3100ms infinite;
+  content: '\2026 \00a0'; /* ascii code for the ellipsis character */
+  width: 0px;
+  white-space: pre;
+}
+
+@keyframes ellipsis {
+  to {
+    width: 15px;
+  }
+}
+
+.card {
+  background: #323737;
+  padding: 10px;
+  width: 100%;
+  margin: 10px 10px;
+  border-radius: 8px;
+  /* Shadows */
+  -webkit-box-shadow: 0px 8px 5px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 8px 5px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 8px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+.game {
+  max-width: 340px;
+  display: flex;
+  /* Distributes the contents across the card */
+  justify-content: space-between;
+  /* vertically aligns center the game contents */
+  align-items: center;
+}
+
+.status {
+  /* For the long text END OF Q# */
+  min-width: 75px;
+  font-size: small;
+}
+
+.quarter {
+  font-size: large;
+}
+
+.clock {
+  font-size: 14px;
+  padding-top: 8px;
+}
+
+.score {
+  font-size: x-large;
+  font-weight: bolder;
+}
+
+.slideUpContainer {
+  /* Stabalizes slide positions in place */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
