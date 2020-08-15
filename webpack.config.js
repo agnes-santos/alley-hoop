@@ -6,6 +6,16 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const { findAllByDisplayValue } = require('@testing-library/react');
 
 module.exports = {
+  devServer: {
+    // for faster reload
+    compress: true,
+    // history-based routing
+    historyApiFallback: true,
+    // opens the browser after launching
+    open: true,
+    // displays webpack errors
+    overlay: true,
+  },
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, './dist'),
