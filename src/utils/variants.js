@@ -1,28 +1,28 @@
-export const slideLeftVariants = {
+export const stretchIn = {
   hidden: {
     opacity: 0,
-    x: '50%',
+    scaleX: 0,
   },
   visible: {
     opacity: 1,
-    x: '0%',
+    scaleX: 1,
     transition: {
-      delay: 0.5,
+      staggerChildren: 0.15,
     },
   },
   exit: {
     opacity: 0,
-    x: '-50%',
+    scaleX: 0,
     transition: {
       duration: 0.2,
     },
   },
 };
 
-export const slideUpVariants = {
+export const slideUp = {
   enter: {
     opacity: 0,
-    y: '75%',
+    y: '20%',
     position: 'absolute',
   },
   center: {
@@ -32,7 +32,7 @@ export const slideUpVariants = {
   },
   exit: {
     opacity: 0,
-    y: '-75%',
+    y: '-25%',
     position: 'absolute',
     transition: {
       duration: 0.2,

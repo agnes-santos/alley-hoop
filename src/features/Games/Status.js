@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { slideUpVariants } from '../../utils/variants';
+import { slideUp } from '../../utils/variants';
 
 const status = (props) => {
   const {
@@ -25,7 +25,7 @@ const status = (props) => {
           <div className="center-container clock">
             <AnimatePresence initial={false}>
               <motion.div
-                variants={slideUpVariants}
+                variants={slideUp}
                 inital="enter"
                 animate="center"
                 exit="exit"

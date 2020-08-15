@@ -1,10 +1,13 @@
 import React from 'react';
 
+import Loader from '../../components/Loader/Loader';
 import nbaTeams from '../../utils/nbaTeams';
+import Game from './Game';
 import db from '../../utils/db.js';
 
-import Loader from '../../components/Loader/Loader';
-import Game from './Game';
+// Animation
+import { motion, AnimatePresence } from 'framer-motion';
+import { stretchIn } from '../../utils/variants';
 
 export default class Games extends React.Component {
   constructor(props) {
@@ -46,16 +49,28 @@ export default class Games extends React.Component {
     } else if (this.state.error) {
       return <div>{this.state.error}</div>;
     } else {
-      return this.state.games.map((game) => {
-        return (
-          <Game
-            game={game}
-            hTeam={nbaTeams[game.hTeam.triCode]}
-            vTeam={nbaTeams[game.vTeam.triCode]}
-            key={game.gameId}
-          />
-        );
-      });
+      return (
+        <AnimatePresence>
+          <motion.div
+            className="games"
+            variants={stretchIn}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
+            {this.state.games.map((game) => {
+              return (
+                <Game
+                  game={game}
+                  hTeam={nbaTeams[game.hTeam.triCode]}
+                  vTeam={nbaTeams[game.vTeam.triCode]}
+                  key={game.gameId}
+                />
+              );
+            })}
+          </motion.div>
+        </AnimatePresence>
+      );
     }
   }
 }

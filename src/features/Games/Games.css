@@ -1,3 +1,11 @@
+.games {
+  /* Displays the cards in a row */
+  display: flex;
+  /* Wraps the cards within the main width */
+  flex-wrap: wrap;
+  /* Centers cards*/
+  justify-content: center;
+}
 .card {
   background: #323737;
   width: 100%;

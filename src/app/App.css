@@ -9,11 +9,9 @@
   margin-top: 86px;
   /* Slims and centers the main content width */
   width: 840px;
-  justify-content: center;
-  /* Displays the cards in a row */
+  /* Centers content */
   display: flex;
-  /* Wraps the cards within the main width */
-  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .svg-shadow {
