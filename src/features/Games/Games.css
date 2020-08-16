@@ -1,4 +1,6 @@
 .games {
+  /* Makes sure card is spread out if only 1 game*/
+  width: 100%;
   /* Displays the cards in a row */
   display: flex;
   /* Wraps the cards within the main width */
