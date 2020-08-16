@@ -10,50 +10,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { stretchIn } from '../../utils/variants';
 
 export default class Games extends React.Component {
-  constructor(props) {
-    super(props);
+  // Loads FB Realtime database
+  games = db.ref().child('gamesToday');
 
-    // Loads FB Realtime database
-    this.games = db.ref().child('gamesToday');
-
-    this.state = {
-      isLoading: true,
-      teamLogosLoading: [
-        'ATL',
-        'BKN',
-        'BOS',
-        'CHA',
-        'CHI',
-        'CLE',
-        'DAL',
-        'DEN',
-        'DET',
-        'GSW',
-        'HOU',
-        'IND',
-        'LAC',
-        'LAL',
-        'MEM',
-        'MIA',
-        'MIL',
-        'MIN',
-        'NOP',
-        'NYK',
-        'OKC',
-        'ORL',
-        'PHI',
-        'PHX',
-        'POR',
-        'SAC',
-        'SAS',
-        'TOR',
-        'UTA',
-        'WAS',
-      ],
-      games: [],
-      error: null,
-    };
-  }
+  state = {
+    isLoading: true,
+    teamLogosLoading: Object.keys(nbaTeams),
+    games: [],
+    error: null,
+  };
 
   handleLogoOnLoad(team) {
     const { teamLogosLoading } = this.state;

@@ -10,18 +10,20 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { stretchIn, slideUp } from '../../utils/variants';
 
 const game = (props) => {
-  const { game } = props;
+  const {
+    game: { clock, hTeam, gameId, isGameActivated, period, startTimeUTC, vTeam },
+  } = props;
 
   return (
     <AnimatePresence>
-      <motion.div className="card game" variants={stretchIn} exit="exit" key={game.gameId}>
+      <motion.div className="card game" variants={stretchIn} exit="exit" key={gameId}>
         <div className="center-container team-logo">
           <img
             rel="preload"
-            alt={game.hTeam.triCode}
+            alt={hTeam.triCode}
             className="svg-shadow"
             height="80"
-            src={game.hTeam.imgSrc}
+            src={hTeam.imgSrc}
           />
         </div>
 
@@ -32,10 +34,10 @@ const game = (props) => {
               initial="enter"
               animate="center"
               exit="exit"
-              key={game.hTeam.triCode + game.hTeam.score}
+              key={hTeam.triCode + hTeam.score}
               className="score"
             >
-              <Score isGameActivated={game.isGameActivated} score={game.hTeam.score} />
+              <Score isGameActivated={isGameActivated} score={hTeam.score} />
             </motion.div>
           </AnimatePresence>
         </div>
@@ -47,14 +49,15 @@ const game = (props) => {
               initial="enter"
               animate="center"
               exit="exit"
-              key={
-                game.gameId +
-                game.startTimeUTC +
-                game.isGameActivated +
-                Object.values(game.period).toString()
-              }
+              key={gameId + startTimeUTC + isGameActivated + Object.values(period).toString()}
             >
-              <Status game={game} />
+              <Status
+                clock={clock}
+                gameId={gameId}
+                isGameActivated={isGameActivated}
+                period={period}
+                startTimeUTC={startTimeUTC}
+              />
             </motion.div>
           </AnimatePresence>
         </div>
@@ -66,10 +69,10 @@ const game = (props) => {
               initial="enter"
               animate="center"
               exit="exit"
-              key={game.vTeam.triCode + game.vTeam.score}
+              key={vTeam.triCode + vTeam.score}
               className="score"
             >
-              <Score isGameActivated={game.isGameActivated} score={game.vTeam.score} />
+              <Score isGameActivated={isGameActivated} score={vTeam.score} />
             </motion.div>
           </AnimatePresence>
         </div>
@@ -77,10 +80,10 @@ const game = (props) => {
         <div className="center-container team-logo">
           <img
             rel="preload"
-            alt={game.vTeam.triCode}
+            alt={vTeam.triCode}
             className="svg-shadow"
             height="80"
-            src={game.vTeam.imgSrc}
+            src={vTeam.imgSrc}
           />
         </div>
       </motion.div>

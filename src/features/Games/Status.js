@@ -4,13 +4,11 @@ import { slideUp } from '../../utils/variants';
 
 const status = (props) => {
   const {
-    game: {
-      clock,
-      gameId,
-      isGameActivated,
-      period: { isHalftime, isEndOfPeriod, current, maxRegular },
-      startTimeUTC,
-    },
+    clock,
+    gameId,
+    isGameActivated,
+    period: { isHalftime, isEndOfPeriod, current, maxRegular },
+    startTimeUTC,
   } = props;
 
   if (isGameActivated && current) {
