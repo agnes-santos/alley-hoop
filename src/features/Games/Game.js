@@ -10,13 +10,19 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { stretchIn, slideUp } from '../../utils/variants';
 
 const game = (props) => {
-  const { game, hTeam, vTeam } = props;
+  const { game } = props;
 
   return (
     <AnimatePresence>
       <motion.div className="card game" variants={stretchIn} exit="exit" key={game.gameId}>
         <div className="center-container team-logo">
-          <img alt={game.hTeam.triCode} className="svg-shadow" height="80" src={hTeam.imgSrc} />
+          <img
+            rel="preload"
+            alt={game.hTeam.triCode}
+            className="svg-shadow"
+            height="80"
+            src={game.hTeam.imgSrc}
+          />
         </div>
 
         <div className="center-container">
@@ -69,7 +75,13 @@ const game = (props) => {
         </div>
 
         <div className="center-container team-logo">
-          <img alt={game.vTeam.triCode} className="svg-shadow" height="80" src={vTeam.imgSrc} />
+          <img
+            rel="preload"
+            alt={game.vTeam.triCode}
+            className="svg-shadow"
+            height="80"
+            src={game.vTeam.imgSrc}
+          />
         </div>
       </motion.div>
     </AnimatePresence>
