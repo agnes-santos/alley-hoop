@@ -51,11 +51,7 @@ export default class Games extends React.Component {
   render() {
     const { isLoading, teamLogosLoading, games, error } = this.state;
     if (isLoading || teamLogosLoading.length) {
-      return (
-        <div>
-          <Loader />
-        </div>
-      );
+      return <Loader />;
     } else if (error) {
       return <div>{error}</div>;
     } else {

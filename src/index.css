@@ -2,12 +2,15 @@
   color: #f9fbf2;
 }
 
-html {
+/* To centralize loader*/
+html,
+body,
+#root,
+.app {
   height: 100%;
 }
 
 body {
-  height: 100%;
   background: #1e2424;
   margin: 0;
   padding: 0;

@@ -1,5 +1,4 @@
 .app {
-  height: 100%;
   /* Centers the main */
   display: flex;
   justify-content: center;
@@ -11,6 +10,13 @@
   width: 840px;
   /* Centers content */
   display: flex;
+  justify-content: center;
+}
+
+/* Centers content vertically and horizontally*/
+.center-container {
+  display: flex;
+  align-items: center;
   justify-content: center;
 }
 

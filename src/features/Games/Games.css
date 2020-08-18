@@ -7,6 +7,8 @@
   flex-wrap: wrap;
   /* Centers cards*/
   justify-content: center;
+  /* Prevents height from expanding */
+  align-content: flex-start;
 }
 .card {
   background: #323737;
@@ -59,11 +61,4 @@
   padding: 30px;
   font-size: x-large;
   font-weight: bolder;
-}
-
-.center-container {
-  /* Stabalizes slide positions in place */
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
