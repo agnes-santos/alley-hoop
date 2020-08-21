@@ -1,32 +1,34 @@
 .toolbar {
   position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
   background: #080f0f;
-  height: 56px;
-  display: flex;
-  /* Put's the navigation bar on the most top 
-    so we can see the shadow on the sidebar */
-  z-index: 300;
+  /* Put's the navigation bar on the most top so shadow is visible */
+  z-index: 2;
   -webkit-box-shadow: 0px 8px 5px 0px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0px 8px 5px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 8px 5px 0px rgba(0, 0, 0, 0.1);
 }
 
-.toolbar-navigation {
-  /* Vertically centers texts */
-  width: 100%;
+.toolbar-nav {
+  padding: 10px 15px;
   display: flex;
-  height: 100%;
-  align-items: center;
-  padding: 0 0.5rem;
+  /* Spreads out toolbar-nav spans across*/
   justify-content: space-between;
+  align-items: center;
 }
 
-.toolbar-logo a {
-  text-decoration: none;
+/* Makes sure current-page is centered on screen, not dependent on nav content*/
+.toolbar-logo,
+.toolbar-timezone {
+  flex: 2;
+}
+
+.toolbar-logo {
   font-size: 1.25em;
+  font-weight: bolder;
+  /* Vertically aligns logo and text*/
+  display: flex;
+  align-items: center;
 }
 
 .toolbar-current-page {
@@ -36,6 +38,7 @@
 }
 
 .toolbar-timezone {
+  text-align: right;
   font-style: italic;
   font-size: 0.9rem;
 }

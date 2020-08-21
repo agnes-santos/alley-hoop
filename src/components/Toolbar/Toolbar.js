@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Logo from '../logo.svg';
 import Hamburger from '../SideDrawer/Hamburger';
 import './Toolbar.css';
 
@@ -9,16 +9,15 @@ const toolbar = (props) => (
       onSideDrawerToggle={props.onSideDrawerToggle}
       sideDrawerOpen={props.sideDrawerOpen}
     />
-    <nav className="toolbar-navigation">
-      <div className="toolbar-logo">
-        <a href="/">Alley Hoop</a>
-      </div>
-
-      <div className="toolbar-current-page">Games</div>
-
-      <div className="toolbar-timezone">
+    <nav className="toolbar-nav">
+      <span className="toolbar-logo">
+        <Logo />
+        Alley Hoop
+      </span>
+      <span className="toolbar-current-page">Games Today</span>
+      <span className="toolbar-timezone">
         All times shown are in {Intl.DateTimeFormat().resolvedOptions().timeZone} Timezone
-      </div>
+      </span>
     </nav>
   </header>
 );
