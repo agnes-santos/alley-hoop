@@ -1,36 +1,13 @@
 import React from 'react';
 import './App.css';
 import Toolbar from '../components/Toolbar/Toolbar';
-import SideDrawer from '../components/SideDrawer/SideDrawer';
-import Backdrop from '../components/Backdrop/Backdrop';
 import Games from '../features/Games/Games';
 
 class App extends React.Component {
-  state = {
-    sideDrawerOpen: false,
-  };
-
-  handleSideDrawerToggle = () => {
-    this.setState((prevState) => {
-      return { sideDrawerOpen: !prevState.sideDrawerOpen };
-    });
-  };
-
-  handleBackdropClick = () => {
-    this.setState({
-      sideDrawerOpen: false,
-    });
-  };
-
   render() {
     return (
       <div className="app">
-        <Toolbar
-          onSideDrawerToggle={this.handleSideDrawerToggle}
-          sideDrawerOpen={this.state.sideDrawerOpen}
-        />
-        <SideDrawer show={this.state.sideDrawerOpen} />
-        <Backdrop onBackdropClick={this.handleBackdropClick} show={this.state.sideDrawerOpen} />
+        <Toolbar />
         <main className="main">
           <Games />
         </main>
