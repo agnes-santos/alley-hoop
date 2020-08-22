@@ -5,12 +5,12 @@ import './Toolbar.css';
 
 const toolbar = (props) => (
   <header className="toolbar">
-    <Hamburger
-      onSideDrawerToggle={props.onSideDrawerToggle}
-      sideDrawerOpen={props.sideDrawerOpen}
-    />
     <nav className="toolbar-nav">
       <span className="toolbar-logo">
+        <Hamburger
+          onSideDrawerToggle={props.onSideDrawerToggle}
+          sideDrawerOpen={props.sideDrawerOpen}
+        />
         <Logo />
         Alley Hoop
       </span>
