@@ -1,6 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/database';
-const config = {
+const fbConfig = {
   apiKey: 'AIzaSyDYSuC9NSZLvz5X1jUZfRPWSBifr1sJfDk',
   authDomain: 'alley-hoop.firebaseapp.com',
   databaseURL: 'https://alley-hoop.firebaseio.com',
@@ -11,8 +11,6 @@ const config = {
   measurementId: 'G-TN65WGBLQL',
 };
 
-if (!firebase.apps.length) {
-  firebase.initializeApp(config);
-}
-const db = firebase.database();
+const fb = firebase.initializeApp(fbConfig);
+const db = fb.database();
 export default db;
