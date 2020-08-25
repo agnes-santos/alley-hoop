@@ -13,6 +13,7 @@
   "scripts": {
     "start": "webpack-dev-server --open --mode development",
     "build": "webpack --mode production",
+    "stats": "webpack --mode production --profile --json > compilation-stats.json",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
