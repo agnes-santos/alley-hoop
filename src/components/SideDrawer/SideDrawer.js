@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 import './SideDrawer.css';
 
@@ -10,20 +11,25 @@ const sideDrawer = (props) => {
   }
   return (
     <nav className={drawerClass.join(' ')}>
-      <ul>
-        <li>
-          <a href="/">Games</a>
-        </li>
-        <li>
+      <div>
+        <NavLink to="/games-today" activeClassName="side-drawer-selected">
+          Games Today
+        </NavLink>
+      </div>
+      <div>
+        <NavLink to="/about" activeClassName="side-drawer-selected">
+          About
+        </NavLink>
+      </div>
+      {/* <div>
           <a href="/">Teams</a>
-        </li>
-        <li>
+        </div>
+        <div>
           <a href="/">Players</a>
-        </li>
-        <li>
+        </div>
+        <div>
           <a href="/">Standings</a>
-        </li>
-      </ul>
+        </div> */}
     </nav>
   );
 };

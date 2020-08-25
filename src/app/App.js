@@ -1,9 +1,15 @@
 import React from 'react';
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
+
+// Components
 import Toolbar from '../components/Toolbar/Toolbar';
 import SideDrawer from '../components/SideDrawer/SideDrawer';
 import Backdrop from '../components/Backdrop/Backdrop';
+
+// Features
 import Games from '../features/Games/Games';
+import About from '../features/About/About';
 
 class App extends React.Component {
   state = {
@@ -23,18 +29,26 @@ class App extends React.Component {
   };
 
   render() {
+    let { sideDrawerOpen } = this.state;
+
     return (
-      <div className="app">
-        <Toolbar
-          onSideDrawerToggle={this.handleSideDrawerToggle}
-          sideDrawerOpen={this.state.sideDrawerOpen}
-        />
-        <SideDrawer show={this.state.sideDrawerOpen} />
-        <Backdrop onBackdropClick={this.handleBackdropClick} show={this.state.sideDrawerOpen} />
-        <main className="main">
-          <Games />
-        </main>
-      </div>
+      <Router>
+        <div className="app">
+          <Toolbar
+            onSideDrawerToggle={this.handleSideDrawerToggle}
+            sideDrawerOpen={sideDrawerOpen}
+          />
+          <SideDrawer show={sideDrawerOpen} />
+          <Backdrop onBackdropClick={this.handleBackdropClick} show={sideDrawerOpen} />
+          <main className="main">
+            <Switch>
+              <Redirect exact from="/" to="/games-today" />
+              <Route path="/games-today" component={Games} />
+              <Route path="/about" component={About} />
+            </Switch>
+          </main>
+        </div>
+      </Router>
     );
   }
 }

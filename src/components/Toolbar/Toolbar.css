@@ -19,7 +19,7 @@
 
 /* Makes sure current-page is centered on screen, not dependent on nav content*/
 .toolbar-logo,
-.toolbar-timezone {
+.toolbar-right {
   flex: 2;
 }
 
@@ -37,10 +37,12 @@
   text-transform: uppercase;
 }
 
-.toolbar-timezone {
-  text-align: right;
+.toolbar-right {
   font-style: italic;
   font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 /* Hides timezone on the toolbar if mobile */
