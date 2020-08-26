@@ -22,9 +22,6 @@
   display: flex;
   align-self: stretch;
   padding: 20px;
-  color: #08b2e3;
-  text-decoration: none;
-  font-weight: bolder;
   /* For hover animation */
   background: linear-gradient(to right, transparent 50%, #2d3333 50%);
   background-size: 200% 100%;

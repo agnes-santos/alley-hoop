@@ -1,0 +1,45 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.about-site {
+  display: flex;
+  border-radius: 140px;
+}
+
+.about-image {
+  height: 205px;
+  padding: 10px;
+  flex: 1;
+}
+
+.about-image svg {
+  height: 200px;
+  flex: 1;
+}
+
+.about-content {
+  display: flex;
+  flex: 3;
+  align-items: center;
+}
+.about-header {
+  font-size: large;
+  margin: 10px;
+}
+
+.about-details div {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.details-icons {
+  margin: 0 10px;
+}
+
+.details-icons svg {
+  fill: #ab2346;
+}

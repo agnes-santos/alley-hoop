@@ -17,7 +17,7 @@ const game = (props) => {
   return (
     <AnimatePresence>
       <motion.div className="card game" variants={stretchIn} exit="exit" key={gameId}>
-        <div className="center-container team-logo">
+        <div className="center-container svg-circle team-logo">
           <img
             rel="preload"
             alt={hTeam.triCode}
@@ -77,7 +77,7 @@ const game = (props) => {
           </AnimatePresence>
         </div>
 
-        <div className="center-container team-logo">
+        <div className="center-container svg-circle team-logo">
           <img
             rel="preload"
             alt={vTeam.triCode}
