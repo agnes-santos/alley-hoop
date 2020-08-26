@@ -5,7 +5,6 @@ import './App.css';
 // Components
 import Toolbar from '../components/Toolbar/Toolbar';
 import SideDrawer from '../components/SideDrawer/SideDrawer';
-import Backdrop from '../components/Backdrop/Backdrop';
 
 // Features
 import Games from '../features/Games/Games';
@@ -22,12 +21,6 @@ class App extends React.Component {
     });
   };
 
-  handleBackdropClick = () => {
-    this.setState({
-      sideDrawerOpen: false,
-    });
-  };
-
   render() {
     let { sideDrawerOpen } = this.state;
 
@@ -39,7 +32,6 @@ class App extends React.Component {
             sideDrawerOpen={sideDrawerOpen}
           />
           <SideDrawer show={sideDrawerOpen} />
-          <Backdrop onBackdropClick={this.handleBackdropClick} show={sideDrawerOpen} />
           <main className="main">
             <Switch>
               <Redirect exact from="/" to="/games-today" />

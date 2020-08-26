@@ -23,7 +23,7 @@
   align-self: stretch;
   padding: 20px;
   /* For hover animation */
-  background: linear-gradient(to right, transparent 50%, #2d3333 50%);
+  background: linear-gradient(to right, transparent 50%, #272f2f 50%);
   background-size: 200% 100%;
   background-position: left bottom;
   transition: all 0.2s ease-in-out;
@@ -34,7 +34,7 @@
 }
 
 a.side-drawer-selected {
-  background: #1e2424;
+  background: #202727;
   color: #ab2346;
   cursor: context-menu;
   box-shadow: none;
@@ -49,7 +49,7 @@ a.side-drawer-selected:after {
   /* Shapes the triangle */
   content: ' ';
   border: solid transparent;
-  border-right-color: #121616;
+  border-right-color: #1e2424;
   border-width: 30px;
   margin-top: -20px;
 }
