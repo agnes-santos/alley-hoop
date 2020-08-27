@@ -3,11 +3,11 @@ import { motion } from 'framer-motion';
 import { slideUp } from '../../utils/variants';
 export default function SiteLogo() {
   const ballEntrance = {
-    enter: {
+    hidden: {
       y: '-100%',
       rotate: 180,
     },
-    center: {
+    visible: {
       y: 0,
       rotate: 0,
       transition: {
@@ -16,7 +16,7 @@ export default function SiteLogo() {
     },
   };
   const ballLoop = {
-    center: {
+    visible: {
       x: [0, 21, 0],
       rotate: [0, 180, 360],
       transition: {

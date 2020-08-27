@@ -6,9 +6,6 @@ export const stretchIn = {
   visible: {
     opacity: 1,
     scaleX: 1,
-    transition: {
-      staggerChildren: 0.08,
-    },
   },
   exit: {
     opacity: 0,
@@ -20,12 +17,12 @@ export const stretchIn = {
 };
 
 export const slideUp = {
-  enter: {
+  hidden: {
     opacity: 0,
     y: '20%',
     position: 'absolute',
   },
-  center: {
+  visible: {
     opacity: 1,
     y: 0,
     position: 'absolute',
@@ -37,5 +34,16 @@ export const slideUp = {
     transition: {
       duration: 0.2,
     },
+  },
+};
+
+export const slideX = {
+  hidden: (custom) => ({
+    opacity: 0,
+    x: custom,
+  }),
+  visible: {
+    opacity: 1,
+    x: 0,
   },
 };

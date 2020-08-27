@@ -29,8 +29,8 @@ const toolbar = (props) => {
           <AnimatePresence initial={false}>
             <motion.span
               variants={slideUp}
-              initial="enter"
-              animate="center"
+              initial="hidden"
+              animate="visible"
               exit="exit"
               className="toolbar-current-page"
               key={currentPage}
@@ -43,8 +43,8 @@ const toolbar = (props) => {
           <AnimatePresence initial={false}>
             <motion.span
               variants={slideUp}
-              initial="enter"
-              animate="center"
+              initial="hidden"
+              animate="visible"
               exit="exit"
               key={currentPage}
               className=""

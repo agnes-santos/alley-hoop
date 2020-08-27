@@ -24,8 +24,8 @@ const status = (props) => {
             <AnimatePresence initial={false}>
               <motion.div
                 variants={slideUp}
-                inital="enter"
-                animate="center"
+                inital="hidden"
+                animate="visible"
                 exit="exit"
                 key={gameId + clock}
               >

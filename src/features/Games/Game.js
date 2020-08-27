@@ -16,7 +16,15 @@ const game = (props) => {
 
   return (
     <AnimatePresence>
-      <motion.div className="card game" variants={stretchIn} exit="exit" key={gameId}>
+      <motion.div
+        className="card game"
+        variants={stretchIn}
+        exit="exit"
+        transition={{
+          staggerChildren: 0.08,
+        }}
+        key={gameId}
+      >
         <div className="center-container svg-circle team-logo">
           <img
             rel="preload"
@@ -31,8 +39,8 @@ const game = (props) => {
           <AnimatePresence initial={false}>
             <motion.div
               variants={slideUp}
-              initial="enter"
-              animate="center"
+              initial="hidden"
+              animate="visible"
               exit="exit"
               key={hTeam.triCode + hTeam.score}
               className="score"
@@ -46,8 +54,8 @@ const game = (props) => {
           <AnimatePresence initial={false}>
             <motion.div
               variants={slideUp}
-              initial="enter"
-              animate="center"
+              initial="hidden"
+              animate="visible"
               exit="exit"
               key={gameId + startTimeUTC + isGameActivated + Object.values(period).toString()}
             >
@@ -66,8 +74,8 @@ const game = (props) => {
           <AnimatePresence initial={false}>
             <motion.div
               variants={slideUp}
-              initial="enter"
-              animate="center"
+              initial="hidden"
+              animate="visible"
               exit="exit"
               key={vTeam.triCode + vTeam.score}
               className="score"

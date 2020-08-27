@@ -66,6 +66,9 @@ export default class Games extends React.Component {
             initial="hidden"
             animate="visible"
             exit="exit"
+            transition={{
+              staggerChildren: 0.08,
+            }}
           >
             {games.map((game) => {
               // SVG logo srcs
