@@ -1,7 +1,7 @@
 const score = (props) => {
-  const { isGameActivated, score } = props;
+  const { isGameActivated, nugget, score } = props;
 
-  return isGameActivated && !score ? '-' : score;
+  return nugget === 'Postponed' || (isGameActivated && !score) ? '-' : score;
 };
 
 export default score;

@@ -7,6 +7,7 @@ const status = (props) => {
     clock,
     gameId,
     isGameActivated,
+    nugget,
     period: { isHalftime, isEndOfPeriod, current, maxRegular },
     startTimeUTC,
   } = props;
@@ -37,7 +38,9 @@ const status = (props) => {
       );
     }
   } else {
-    if (current >= maxRegular) {
+    if (nugget === 'Postponed') {
+      return nugget.toUpperCase();
+    } else if (current >= maxRegular) {
       return 'FINAL';
     } else {
       return new Date(startTimeUTC).toLocaleTimeString([], {
