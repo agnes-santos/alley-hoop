@@ -3,8 +3,8 @@ import './About.css';
 import SiteLogo from './SiteLogo';
 import DevLogo from './DevLogo';
 import { RiMapPinTimeLine, RiLinkedinBoxLine, RiReactjsLine } from 'react-icons/ri';
-import { VscSync, VscMenu } from 'react-icons/vsc';
-import { SiFirebase } from 'react-icons/si';
+import { VscSync } from 'react-icons/vsc';
+import { SiFirebase, SiInkscape } from 'react-icons/si';
 // Animation
 import { motion } from 'framer-motion';
 import { slideUp, slideX } from '../../utils/variants';
@@ -18,7 +18,6 @@ const slideDown = {
     opacity: 1,
     y: 0,
     transition: {
-      delayChildren: 1,
       when: 'beforeChildren',
       staggerChildren: 0.4,
     },
@@ -31,12 +30,16 @@ export default class About extends React.Component {
 
   render() {
     return (
-      <div className="about">
-        {/* <motion.div
+      <motion.div
+        variants={slideX}
+        initial="hidden"
+        animate="visible"
+        transition={{ staggerChildren: 0.8 }}
+        className="about"
+      >
+        <motion.div
           custom={'50%'}
           variants={slideX}
-          initial="hidden"
-          animate="visible"
           transition={{ when: 'beforeChildren' }}
           className="card about-site"
         >
@@ -54,7 +57,7 @@ export default class About extends React.Component {
               <motion.div
                 custom={'50%'}
                 variants={slideX}
-                transition={{ when: 'beforeChildren', delay: 1 }}
+                transition={{ when: 'beforeChildren' }}
                 className="about-header"
               >
                 Alley Hoop shows NBA game scores of the day.
@@ -73,18 +76,16 @@ export default class About extends React.Component {
                     <RiMapPinTimeLine size={30} />
                   </span>
                   <span className="details-content">
-                    Times displayed are shown in user's local time
+                    Times displayed are shown in viewer's local time
                   </span>
                 </motion.div>
               </motion.div>
             </motion.div>
           </div>
-        </motion.div> */}
+        </motion.div>
         <motion.div
           custom={'-50%'}
           variants={slideX}
-          initial="hidden"
-          animate="visible"
           transition={{ when: 'beforeChildren' }}
           className="card about-dev"
         >
@@ -97,7 +98,7 @@ export default class About extends React.Component {
               <motion.div
                 custom={'50%'}
                 variants={slideX}
-                transition={{ when: 'beforeChildren', delay: 1 }}
+                transition={{ when: 'beforeChildren' }}
                 className="about-header"
               >
                 Site and looped icons designed and developed by &nbsp;
@@ -116,16 +117,15 @@ export default class About extends React.Component {
                 <motion.div variants={slideDown}>
                   <span className="details-content">Database and site hosted in Firebase</span>
                   <span className="details-icons">
-                    <SiFirebase size={25} />
+                    <SiFirebase size={20} />
                   </span>
                 </motion.div>
                 <motion.div variants={slideDown}>
                   <span className="details-content">
-                    CSS-animated hamburger by{' '}
-                    <a href="https://jonsuh.com/hamburgers">Jonathan Suh</a>
+                    Looped vector graphics designed in Inkscape
                   </span>
                   <span className="details-icons">
-                    <VscMenu size={25} />
+                    <SiInkscape size={20} />
                   </span>
                 </motion.div>
               </motion.div>
@@ -141,7 +141,7 @@ export default class About extends React.Component {
             </motion.div>
           </div>
         </motion.div>
-      </div>
+      </motion.div>
     );
   }
 }

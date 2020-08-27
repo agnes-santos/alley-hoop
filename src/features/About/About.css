@@ -6,6 +6,7 @@
 
 .about-dev,
 .about-site {
+  margin: 40px 0px;
   display: flex;
   border-radius: 140px;
 }
@@ -41,18 +42,16 @@
 }
 
 .about-dev .about-header {
-  margin: 10px 0;
-  font-size: 17px;
+  margin: 0px -10px;
 }
 
 .about-details div {
-  padding: 10px;
+  padding: 5px;
   display: flex;
   align-items: center;
 }
 
 .about-dev .about-details div {
-  padding: 5px;
   justify-content: flex-end;
 }
 
