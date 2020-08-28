@@ -25,14 +25,14 @@ const toolbar = (props) => {
           <Logo />
           Alley Hoop
         </span>
-        <span className="center-container">
+        <span className="toolbar-current-page">
           <AnimatePresence initial={false}>
             <motion.span
               variants={slideUp}
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="toolbar-current-page"
+              className=""
               key={currentPage}
             >
               {currentPage}

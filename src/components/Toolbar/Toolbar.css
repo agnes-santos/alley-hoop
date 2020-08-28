@@ -17,12 +17,6 @@
   align-items: center;
 }
 
-/* Makes sure current-page is centered on screen, not dependent on nav content*/
-.toolbar-logo,
-.toolbar-right {
-  flex: 2;
-}
-
 .toolbar-logo {
   font-size: 1.25em;
   font-weight: bolder;
@@ -31,23 +25,38 @@
   align-items: center;
 }
 
-.toolbar-current-page {
-  color: #ab2346;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
+.toolbar-current-page,
 .toolbar-right {
-  font-style: italic;
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  display: none;
 }
 
-/* Hides timezone on the toolbar if mobile */
-@media (max-width: 768px) {
-  .toolbar-timezone {
-    display: none;
+@media (min-width: 25em) {
+  .toolbar-current-page {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .toolbar-current-page span {
+    color: #ab2346;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}
+
+@media (min-width: 49.5em) {
+  .toolbar-logo {
+    flex: 2;
+  }
+  .toolbar-current-page {
+    justify-content: center;
+  }
+  .toolbar-right {
+    font-style: italic;
+    font-size: small;
+    display: flex;
+    flex: 2;
+    align-items: center;
+    justify-content: flex-end;
   }
 }

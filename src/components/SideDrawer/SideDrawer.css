@@ -1,12 +1,12 @@
 .side-drawer {
   height: 100%;
+  width: 100%;
   background: #252b2b;
   position: fixed;
   /* Moved the sidebar below the tool bar*/
-  top: 60px;
+  top: 3.75em;
   left: 0;
-  width: 70%;
-  max-width: 400px;
+  max-width: 26.25em;
   z-index: 2;
   /* Moves along the x axis to the left -100% of 0 */
   transform: translateX(-100%);
@@ -52,4 +52,11 @@ a.side-drawer-selected:after {
   border-right-color: #1e2424;
   border-width: 30px;
   margin-top: -20px;
+}
+
+/* width: 640px > */
+@media (min-width: 40em) {
+  .side-drawer {
+    max-width: 23.75em;
+  }
 }
