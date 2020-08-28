@@ -16,10 +16,15 @@ const status = (props) => {
     if (isHalftime) {
       return 'HALFTIME';
     } else if (isEndOfPeriod) {
-      return 'END OF Q' + current;
+      return (
+        <div>
+          <div>END</div>
+          <div>OF Q{current}</div>
+        </div>
+      );
     } else {
       return (
-        <div className="game-quarter">
+        <div>
           <div className="quarter">{current <= maxRegular ? 'Q' + current : 'OT'}</div>
           <div className="center-container clock">
             <AnimatePresence initial={false}>

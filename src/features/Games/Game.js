@@ -44,55 +44,57 @@ const game = (props) => {
           />
         </div>
 
-        <div className="center-container">
-          <AnimatePresence initial={false}>
-            <motion.div
-              variants={slideUp}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              key={hTeam.triCode + hTeam.score}
-              className="score"
-            >
-              <Score isGameActivated={isGameActivated} nugget={text} score={hTeam.score} />
-            </motion.div>
-          </AnimatePresence>
-        </div>
+        <div className="details">
+          <div className="center-container">
+            <AnimatePresence initial={false}>
+              <motion.div
+                variants={slideUp}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                key={hTeam.triCode + hTeam.score}
+                className="score"
+              >
+                <Score isGameActivated={isGameActivated} nugget={text} score={hTeam.score} />
+              </motion.div>
+            </AnimatePresence>
+          </div>
 
-        <div className="center-container status">
-          <AnimatePresence initial={false}>
-            <motion.div
-              variants={slideUp}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              key={gameId + startTimeUTC + isGameActivated + Object.values(period).toString()}
-            >
-              <Status
-                clock={clock}
-                gameId={gameId}
-                isGameActivated={isGameActivated}
-                nugget={text}
-                period={period}
-                startTimeUTC={startTimeUTC}
-              />
-            </motion.div>
-          </AnimatePresence>
-        </div>
+          <div className="center-container status">
+            <AnimatePresence initial={false}>
+              <motion.div
+                variants={slideUp}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                key={gameId + startTimeUTC + isGameActivated + Object.values(period).toString()}
+              >
+                <Status
+                  clock={clock}
+                  gameId={gameId}
+                  isGameActivated={isGameActivated}
+                  nugget={text}
+                  period={period}
+                  startTimeUTC={startTimeUTC}
+                />
+              </motion.div>
+            </AnimatePresence>
+          </div>
 
-        <div className="center-container">
-          <AnimatePresence initial={false}>
-            <motion.div
-              variants={slideUp}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              key={vTeam.triCode + vTeam.score}
-              className="score"
-            >
-              <Score isGameActivated={isGameActivated} nugget={text} score={vTeam.score} />
-            </motion.div>
-          </AnimatePresence>
+          <div className="center-container">
+            <AnimatePresence initial={false}>
+              <motion.div
+                variants={slideUp}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                key={vTeam.triCode + vTeam.score}
+                className="score"
+              >
+                <Score isGameActivated={isGameActivated} nugget={text} score={vTeam.score} />
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
 
         <div className="center-container svg-circle team-logo">

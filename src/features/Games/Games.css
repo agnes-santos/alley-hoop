@@ -1,8 +1,8 @@
 .games {
-  /* Makes sure card is spread out if only 1 game*/
-  width: 100%;
   /* Displays the cards in a row */
   display: flex;
+  /* Makes sure card is spread out if only 1 game*/
+  flex: 1;
   /* Wraps the cards within the main width */
   flex-wrap: wrap;
   /* Centers cards*/
@@ -12,9 +12,9 @@
 }
 
 .game {
-  margin: 15px;
-  border-radius: 53px;
-  max-width: 380px;
+  margin: 0.6em 0.5em;
+  border-radius: 3em;
+  max-width: 23.75em;
   display: flex;
   /* Distributes the contents across the card */
   justify-content: space-between;
@@ -23,28 +23,74 @@
 }
 
 .team-logo {
-  height: 85px;
-  width: 85px;
-  padding: 5px;
+  flex: 1;
+  padding: 0.5em;
+}
+
+.details {
+  display: flex;
+  flex: 2;
+  align-items: center;
+  padding: 0.925em;
 }
 
 .status {
-  /* For the long text END OF Q# */
-  min-width: 75px;
-  font-size: small;
+  flex: 1;
+  font-size: x-small;
+}
+
+.status > div > div > div {
+  text-align: center;
 }
 
 .quarter {
-  font-size: large;
+  font-size: initial;
 }
 
 .clock {
-  font-size: 14px;
-  padding-top: 8px;
+  font-size: small;
+  margin: 0.5em;
 }
 
 .score {
-  padding: 30px;
-  font-size: x-large;
+  font-size: smaller;
   font-weight: bolder;
+}
+
+/* width: 360px > */
+@media (min-width: 22em) {
+  .details {
+    padding: 1.3em;
+  }
+  .status {
+    font-size: small;
+  }
+  .score {
+    font-size: large;
+  }
+}
+
+/* width: 400px > */
+@media (min-width: 25em) {
+  .details {
+    padding: 2em;
+  }
+  .quarter {
+    font-size: large;
+  }
+
+  .clock {
+    font-size: initial;
+  }
+
+  .score {
+    font-size: x-large;
+    font-weight: bolder;
+  }
+}
+/* width: 792px > */
+@media (min-width: 49.5em) {
+  .game {
+    margin: 0.8em 0.5em;
+  }
 }
