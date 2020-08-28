@@ -2,30 +2,70 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+  /* Wraps the cards within the main width */
+  flex-flow: wrap;
+  /* Centers cards*/
+  justify-content: center;
+  /* Prevents height from expanding */
+  align-content: flex-start;
 }
 
 .about-dev,
 .about-site {
-  margin: 40px 0px;
+  margin: 1.2em 0.4em;
   display: flex;
-  border-radius: 140px;
+  /* added for mobile*/
+  padding-bottom: 3.4em;
+  flex-direction: column;
+  max-width: 19.3em;
+  border-radius: 11em;
 }
 
 .about-image {
-  height: 205px;
-  padding: 10px;
-  flex: 1;
+  align-self: center;
+  height: 13em;
+  width: 13em;
+  padding: 3.2em;
 }
 
 .about-image svg {
-  height: 200px;
-  flex: 1;
+  height: 13em;
 }
 
 .about-content {
   display: flex;
-  flex: 3;
+  padding: 1em;
   align-items: center;
+}
+
+.about-header {
+  display: flex;
+  align-items: center;
+}
+
+.about-details {
+  margin: 0.8em 0em;
+}
+
+.about-details div {
+  padding: 0.6em 0.2em;
+  display: flex;
+  align-items: center;
+  font-size: 0.9em;
+}
+
+.details-icons {
+  margin: 0 1em;
+}
+
+.details-icons svg {
+  fill: #ab2346;
+}
+
+/* About Dev */
+.about-dev {
+  flex-direction: column-reverse;
+  padding-bottom: 3.2em;
 }
 
 .about-dev > .about-content {
@@ -34,31 +74,59 @@
   text-align: right;
 }
 
-.about-header {
-  font-size: large;
-  margin: 10px;
-  display: flex;
-  align-items: center;
-}
-
 .about-dev .about-header {
-  margin: 0px -10px;
-}
-
-.about-details div {
-  padding: 5px;
-  display: flex;
-  align-items: center;
+  margin: 0 -0.6em;
 }
 
 .about-dev .about-details div {
   justify-content: flex-end;
+  padding: 0.4em 0.5em 0.4em 0.4em;
 }
 
-.details-icons {
-  margin: 0 10px;
+.about-dev .details-icons {
+  margin: 0 0.5em;
 }
 
-.details-icons svg {
-  fill: #ab2346;
+/* width: 645px > */
+
+@media (min-width: 40.2em) {
+  .about {
+    justify-content: space-evenly;
+  }
+  .about-site,
+  .about-dev {
+    padding-bottom: 1;
+  }
+}
+/* width: 792px > */
+@media (min-width: 49.5em) {
+  .about-dev,
+  .about-site {
+    margin: 2em 1em;
+    flex-direction: row;
+    max-width: 48em;
+    padding: 0;
+  }
+
+  .about-dev {
+    justify-content: flex-end;
+  }
+
+  .about-image {
+    padding: 0.8em;
+  }
+
+  /* Shows data nearer to logos*/
+  .about-content {
+    padding: 0;
+  }
+
+  .about-details div,
+  .about-dev .about-details div {
+    padding: 0.3em;
+  }
+
+  .about .details-icons {
+    margin: 0 1em;
+  }
 }

@@ -96,13 +96,15 @@ export default class About extends React.Component {
               transition={{ when: 'beforeChildren', delay: 1 }}
             >
               <motion.div
-                custom={'50%'}
+                custom={'-15%'}
                 variants={slideX}
                 transition={{ when: 'beforeChildren' }}
                 className="about-header"
               >
-                Site and looped icons designed and developed by &nbsp;
-                <a href="https://wwww.linkedin.com/in/agnes-nuguid">Agnes Nuguid</a>
+                <span>
+                  Site & looped icons designed & developed by &nbsp;
+                  <a href="https://wwww.linkedin.com/in/agnes-nuguid">Agnes Nuguid</a>
+                </span>
                 <span className="details-icons">
                   <RiLinkedinBoxLine size={30} />
                 </span>
@@ -117,7 +119,7 @@ export default class About extends React.Component {
                 <motion.div variants={slideDown}>
                   <span className="details-content">Database and site hosted in Firebase</span>
                   <span className="details-icons">
-                    <SiFirebase size={20} />
+                    <SiFirebase size={25} />
                   </span>
                 </motion.div>
                 <motion.div variants={slideDown}>
@@ -125,7 +127,7 @@ export default class About extends React.Component {
                     Looped vector graphics designed in Inkscape
                   </span>
                   <span className="details-icons">
-                    <SiInkscape size={20} />
+                    <SiInkscape size={25} />
                   </span>
                 </motion.div>
               </motion.div>
