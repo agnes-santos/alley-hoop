@@ -87,24 +87,13 @@
   margin: 0 0.5em;
 }
 
-/* width: 645px > */
-
-@media (min-width: 40.2em) {
-  .about {
-    justify-content: space-evenly;
-  }
-  .about-site,
-  .about-dev {
-    padding-bottom: 1;
-  }
-}
 /* width: 792px > */
 @media (min-width: 49.5em) {
   .about-dev,
   .about-site {
     margin: 2em 1em;
     flex-direction: row;
-    max-width: 48em;
+    max-width: 44.5em;
     padding: 0;
   }
 

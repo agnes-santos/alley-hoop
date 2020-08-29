@@ -13,10 +13,15 @@
 .main {
   margin-top: 5em;
   /* Slims and centers the main content width */
-  width: 840px;
+  width: 52.5em;
   /* Centers content */
   display: flex;
   justify-content: center;
+}
+
+/* Fixes adjusting width in toolbar in small devices */
+.overflow-container {
+  overflow: hidden;
 }
 
 .card {

@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Loader from '../../components/Loader/Loader';
 import nbaTeams from '../../utils/nbaTeams';
 import Game from './Game';
@@ -59,26 +58,28 @@ export default class Games extends React.Component {
       return <div>{error}</div>;
     } else {
       return (
-        <AnimatePresence>
-          <motion.div
-            className="games"
-            variants={stretchIn}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            transition={{
-              staggerChildren: 0.08,
-            }}
-          >
-            {games.map((game) => {
-              // SVG logo srcs
-              game.hTeam.imgSrc = nbaTeams[game.hTeam.triCode].imgSrc;
-              game.vTeam.imgSrc = nbaTeams[game.vTeam.triCode].imgSrc;
+        <div className="overflow-container">
+          <AnimatePresence>
+            <motion.div
+              className="games"
+              variants={stretchIn}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              transition={{
+                staggerChildren: 0.08,
+              }}
+            >
+              {games.map((game) => {
+                // SVG logo srcs
+                game.hTeam.imgSrc = nbaTeams[game.hTeam.triCode].imgSrc;
+                game.vTeam.imgSrc = nbaTeams[game.vTeam.triCode].imgSrc;
 
-              return <Game game={game} key={game.gameId} />;
-            })}
-          </motion.div>
-        </AnimatePresence>
+                return <Game game={game} key={game.gameId} />;
+              })}
+            </motion.div>
+          </AnimatePresence>
+        </div>
       );
     }
   }
