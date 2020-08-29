@@ -31,7 +31,7 @@ class App extends React.Component {
             onSideDrawerToggle={this.handleSideDrawerToggle}
             sideDrawerOpen={sideDrawerOpen}
           />
-          <SideDrawer show={sideDrawerOpen} />
+          <SideDrawer show={sideDrawerOpen} onSideDrawerToggle={this.handleSideDrawerToggle} />
           <main className="main">
             <Switch>
               <Redirect exact from="/" to="/games-today" />
