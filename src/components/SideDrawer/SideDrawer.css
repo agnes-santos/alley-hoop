@@ -21,7 +21,7 @@
 .side-drawer a {
   display: flex;
   align-self: stretch;
-  padding: 20px;
+  padding: 1.2em;
   /* For hover animation */
   background: linear-gradient(to right, transparent 50%, #272f2f 50%);
   background-size: 200% 100%;
@@ -37,7 +37,7 @@ a.side-drawer-selected {
   background: #202727;
   color: #ab2346;
   cursor: context-menu;
-  box-shadow: none;
+  outline: none;
 }
 
 a.side-drawer-selected:after {
@@ -50,8 +50,8 @@ a.side-drawer-selected:after {
   content: ' ';
   border: solid transparent;
   border-right-color: #1e2424;
-  border-width: 30px;
-  margin-top: -20px;
+  border-width: 1.7em;
+  margin-top: -1em;
 }
 
 /* width: 640px > */

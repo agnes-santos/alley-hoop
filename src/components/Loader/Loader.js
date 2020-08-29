@@ -5,7 +5,7 @@ const Loader = (props) => {
   return (
     <div className="center-container">
       <motion.svg
-        style={{ originX: '25px', originY: '25px' }}
+        style={{ originX: '0.5', originY: '0.5' }}
         animate={{ scale: [1, 0, 1], rotate: [0, 180, 360] }}
         transition={{ loop: Infinity, ease: 'easeInOut', duration: 1.5 }}
         width="50"

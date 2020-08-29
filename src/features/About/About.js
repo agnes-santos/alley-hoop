@@ -69,7 +69,7 @@ export default class About extends React.Component {
                       <VscSync size={30} />
                     </span>
                     <span className="details-content">
-                      Syncs every minute from 6:00 AM - 1:00 PM Singapore Time
+                      Syncs every minute from 8:00 AM - 1:00 PM Singapore Time
                     </span>
                   </motion.div>
                   <motion.div variants={slideDown}>

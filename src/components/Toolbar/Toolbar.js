@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import './Toolbar.css';
+import { RiMapPinTimeLine, RiInformationLine } from 'react-icons/ri';
 
 //Components
 import Logo from '../logo.svg';
@@ -12,11 +13,21 @@ import { slideUp } from '../../utils/variants';
 
 const toolbar = (props) => {
   const currentPage = useLocation().pathname.replace('/', '').replace('-', ' ');
+
+  let rightIcon, rightText;
+  switch (currentPage) {
+    case 'about':
+      rightIcon = <RiInformationLine size={23} />;
+      rightText = ' ';
+      break;
+    default:
+      rightIcon = <RiMapPinTimeLine size={23} />;
+      rightText =
+        'Times shown in ' + Intl.DateTimeFormat().resolvedOptions().timeZone + ' Timezone';
+  }
+
   const { onSideDrawerToggle, sideDrawerOpen } = props;
-  const rightSide =
-    currentPage === 'games today'
-      ? 'All times shown are in ' + Intl.DateTimeFormat().resolvedOptions().timeZone + 'Timezone'
-      : '';
+
   return (
     <header className="toolbar">
       <nav className="toolbar-nav">
@@ -32,7 +43,6 @@ const toolbar = (props) => {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className=""
               key={currentPage}
             >
               {currentPage}
@@ -47,9 +57,9 @@ const toolbar = (props) => {
               animate="visible"
               exit="exit"
               key={currentPage}
-              className=""
             >
-              {rightSide}
+              {rightIcon} &nbsp;
+              {rightText}
             </motion.span>
           </AnimatePresence>
         </span>

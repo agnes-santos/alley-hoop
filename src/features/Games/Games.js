@@ -5,7 +5,7 @@ import Game from './Game';
 import db from '../../utils/db.js';
 
 // Animation
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { stretchIn } from '../../utils/variants';
 
 export default class Games extends React.Component {
@@ -59,26 +59,23 @@ export default class Games extends React.Component {
     } else {
       return (
         <div className="overflow-container">
-          <AnimatePresence>
-            <motion.div
-              className="games"
-              variants={stretchIn}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              transition={{
-                staggerChildren: 0.08,
-              }}
-            >
-              {games.map((game) => {
-                // SVG logo srcs
-                game.hTeam.imgSrc = nbaTeams[game.hTeam.triCode].imgSrc;
-                game.vTeam.imgSrc = nbaTeams[game.vTeam.triCode].imgSrc;
+          <motion.div
+            className="games"
+            variants={stretchIn}
+            initial="hidden"
+            animate="visible"
+            transition={{
+              staggerChildren: 0.08,
+            }}
+          >
+            {games.map((game) => {
+              // SVG logo srcs
+              game.hTeam.imgSrc = nbaTeams[game.hTeam.triCode].imgSrc;
+              game.vTeam.imgSrc = nbaTeams[game.vTeam.triCode].imgSrc;
 
-                return <Game game={game} key={game.gameId} />;
-              })}
-            </motion.div>
-          </AnimatePresence>
+              return <Game game={game} key={game.gameId} />;
+            })}
+          </motion.div>
         </div>
       );
     }

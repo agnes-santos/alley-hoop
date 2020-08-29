@@ -41,6 +41,7 @@
 .about-header {
   display: flex;
   align-items: center;
+  padding-bottom: 0.5em;
 }
 
 .about-details {
@@ -75,7 +76,7 @@
 }
 
 .about-dev .about-header {
-  margin: 0 -0.6em;
+  margin: 0 -0.7em;
 }
 
 .about-dev .about-details div {
@@ -110,9 +111,13 @@
     padding: 0;
   }
 
+  .about-details {
+    margin: 0em;
+  }
+
   .about-details div,
   .about-dev .about-details div {
-    padding: 0.3em;
+    padding: 0.4em 0em 0em 0em;
   }
 
   .about .details-icons {
