@@ -69,7 +69,7 @@ export default class About extends React.Component {
                       <VscSync size={30} />
                     </span>
                     <span className="details-content">
-                      Syncs every minute from 8:00 AM - 1:00 PM Singapore Time
+                      Syncs every minute from 6:00 AM - 12:00 PM Singapore Time
                     </span>
                   </motion.div>
                   <motion.div variants={slideDown}>
@@ -105,7 +105,7 @@ export default class About extends React.Component {
                 >
                   <span>
                     Site & looped icons designed & developed by &nbsp;
-                    <a href="https://wwww.linkedin.com/in/agnes-nuguid">Agnes Nuguid</a>
+                    <a href="https://www.linkedin.com/in/agnes-nuguid">Agnes Nuguid</a>
                   </span>
                   <span className="details-icons">
                     <RiLinkedinBoxLine size={30} />
