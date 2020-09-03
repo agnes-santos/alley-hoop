@@ -113,6 +113,15 @@ module.exports = function (env, argv) {
         }),
         new OptimizeCssAssetsPlugin(),
       ],
+      splitChunks: {
+        chunks: 'all',
+        cacheGroups: {
+          firebaseVendor: {
+            test: /[\\/]node_modules[\\/](@firebase)[\\/]/,
+            name: 'vendorChunk',
+          },
+        },
+      },
     },
   };
 };
