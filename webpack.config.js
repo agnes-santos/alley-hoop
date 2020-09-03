@@ -6,6 +6,7 @@ const TerserWebpackPlugin = require('terser-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = function (env, argv) {
   const isProduction = argv.mode === 'production';
@@ -89,6 +90,7 @@ module.exports = function (env, argv) {
       //   deleteOriginalAssets: true,
       // }),
       new CleanWebpackPlugin(),
+      // new BundleAnalyzerPlugin(),
     ].filter(Boolean),
     optimization: {
       minimize: isProduction,
