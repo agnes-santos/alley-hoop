@@ -88,7 +88,7 @@ module.exports = function (env, argv) {
         favicon: './src/favicon.ico',
       }),
       // new CompressionPlugin({
-      //   // deleteOriginalAssets: true,
+      // deleteOriginalAssets: true,
       // }),
       new CleanWebpackPlugin(),
       // new BundleAnalyzerPlugin(),
