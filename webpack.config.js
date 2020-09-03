@@ -11,10 +11,11 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 module.exports = function (env, argv) {
   const isProduction = argv.mode === 'production';
   const isDevelopment = !isProduction;
-
   return {
-    devtool: isDevelopment && 'cheap-module-source-map',
+    devtool: isDevelopment && 'eval-source-map',
     devServer: {
+      hot: true,
+      inline: true,
       compress: true,
       historyApiFallback: true,
       open: true,
@@ -23,8 +24,8 @@ module.exports = function (env, argv) {
     entry: './src/index.js',
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: 'assets/js/[name].[contenthash:8].js',
-      // publicPath: isDevelopment ? '/' : '/dist',
+      filename: 'assets/js/[name].[hash:8].js',
+      publicPath: '/',
     },
     module: {
       rules: [
@@ -70,13 +71,13 @@ module.exports = function (env, argv) {
       ],
     },
     resolve: {
-      extensions: ['.js', '.jsx'],
+      extensions: ['.mjs', '.js', '.jsx'],
     },
     plugins: [
       isProduction &&
         new MiniCssExtractPlugin({
-          filename: 'assets/css/[name].[contenthash:8].css',
-          chunkFilename: 'assets/css/[name].[contenthash:8].chunk.css',
+          filename: 'assets/css/[name].[hash:8].css',
+          chunkFilename: 'assets/css/[name].[hash:8].chunk.css',
         }),
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(isProduction ? 'production' : 'development'),
@@ -87,7 +88,7 @@ module.exports = function (env, argv) {
         favicon: './src/favicon.ico',
       }),
       // new CompressionPlugin({
-      //   deleteOriginalAssets: true,
+      //   // deleteOriginalAssets: true,
       // }),
       new CleanWebpackPlugin(),
       // new BundleAnalyzerPlugin(),
@@ -96,7 +97,6 @@ module.exports = function (env, argv) {
       minimize: isProduction,
       minimizer: [
         new TerserWebpackPlugin({
-          extractComments: false,
           terserOptions: {
             compress: {
               comparisons: false,
