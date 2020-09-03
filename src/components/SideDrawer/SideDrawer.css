@@ -1,0 +1,62 @@
+.side-drawer {
+  height: 100%;
+  width: 100%;
+  background: #252b2b;
+  position: fixed;
+  /* Moved the sidebar below the tool bar*/
+  top: 3.75em;
+  left: 0;
+  max-width: 26.25em;
+  z-index: 2;
+  /* Moves along the x axis to the left -100% of 0 */
+  transform: translateX(-100%);
+  transition: transform 0.2s ease-out;
+}
+
+.side-drawer.open {
+  /* Default position */
+  transform: translateX(0);
+}
+
+.side-drawer a {
+  display: flex;
+  align-self: stretch;
+  padding: 1.2em;
+  /* For hover animation */
+  background: linear-gradient(to right, transparent 50%, #272f2f 50%);
+  background-size: 200% 100%;
+  background-position: left bottom;
+  transition: all 0.2s ease-in-out;
+}
+
+.side-drawer a:hover {
+  background-position: right bottom;
+}
+
+a.side-drawer-selected {
+  background: #202727;
+  color: #ab2346;
+  cursor: context-menu;
+  outline: none;
+}
+
+a.side-drawer-selected:after {
+  /* Positions triangle at the end*/
+  right: 0;
+  height: 0;
+  width: 0;
+  position: absolute;
+  /* Shapes the triangle */
+  content: ' ';
+  border: solid transparent;
+  border-right-color: #1e2424;
+  border-width: 1.7em;
+  margin-top: -1em;
+}
+
+/* width: 640px > */
+@media (min-width: 40em) {
+  .side-drawer {
+    max-width: 23.75em;
+  }
+}

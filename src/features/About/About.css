@@ -1,0 +1,126 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  /* Wraps the cards within the main width */
+  flex-flow: wrap;
+  /* Centers cards*/
+  justify-content: center;
+  /* Prevents height from expanding */
+  align-content: flex-start;
+}
+
+.about-dev,
+.about-site {
+  margin: 1.2em 0.4em;
+  display: flex;
+  /* added for mobile*/
+  padding-bottom: 3.4em;
+  flex-direction: column;
+  max-width: 19.3em;
+  border-radius: 11em;
+}
+
+.about-image {
+  align-self: center;
+  height: 13em;
+  width: 13em;
+  padding: 3.2em;
+}
+
+.about-image svg {
+  height: 13em;
+}
+
+.about-content {
+  display: flex;
+  padding: 1em;
+  align-items: center;
+}
+
+.about-header {
+  display: flex;
+  align-items: center;
+  padding-bottom: 0.5em;
+}
+
+.about-details {
+  margin: 0.8em 0em;
+}
+
+.about-details div {
+  padding: 0.6em 0.2em;
+  display: flex;
+  align-items: center;
+  font-size: 0.9em;
+}
+
+.details-icons {
+  margin: 0 1em;
+}
+
+.details-icons svg {
+  fill: #ab2346;
+}
+
+/* About Dev */
+.about-dev {
+  flex-direction: column-reverse;
+  padding-bottom: 3.2em;
+}
+
+.about-dev > .about-content {
+  display: flex;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.about-dev .about-header {
+  margin: 0 -0.7em;
+}
+
+.about-dev .about-details div {
+  justify-content: flex-end;
+  padding: 0.4em 0.5em 0.4em 0.4em;
+}
+
+.about-dev .details-icons {
+  margin: 0 0.5em;
+}
+
+/* width: 792px > */
+@media (min-width: 49.5em) {
+  .about-dev,
+  .about-site {
+    margin: 2em 1em;
+    flex-direction: row;
+    max-width: 44.5em;
+    padding: 0;
+  }
+
+  .about-dev {
+    justify-content: flex-end;
+  }
+
+  .about-image {
+    padding: 0.8em;
+  }
+
+  /* Shows data nearer to logos*/
+  .about-content {
+    padding: 0;
+  }
+
+  .about-details {
+    margin: 0em;
+  }
+
+  .about-details div,
+  .about-dev .about-details div {
+    padding: 0.4em 0em 0em 0em;
+  }
+
+  .about .details-icons {
+    margin: 0 1em;
+  }
+}

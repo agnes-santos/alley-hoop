@@ -1,0 +1,64 @@
+.toolbar {
+  position: fixed;
+  width: 100%;
+  background: #080f0f;
+  /* Put's the navigation bar on the most top so shadow is visible */
+  z-index: 3;
+  -webkit-box-shadow: 0em 0.5em 0.3125em 0em rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0em 0.5em 0.3125em 0em rgba(0, 0, 0, 0.1);
+  box-shadow: 0em 0.5em 0.3125em 0em rgba(0, 0, 0, 0.1);
+}
+
+.toolbar-nav {
+  padding: 0.625em;
+  display: flex;
+  /* Spreads out toolbar-nav spans across*/
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toolbar-logo {
+  font-size: 1.25em;
+  font-weight: bolder;
+  /* Vertically aligns logo and text*/
+  display: flex;
+  align-items: center;
+}
+
+.toolbar-current-page,
+.toolbar-right {
+  display: none;
+}
+
+@media (min-width: 25em) {
+  .toolbar-current-page {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .toolbar-current-page span {
+    color: #ab2346;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}
+
+@media (min-width: 49.5em) {
+  .toolbar-logo {
+    flex: 2;
+  }
+  .toolbar-current-page {
+    justify-content: center;
+  }
+
+  .toolbar-right,
+  .toolbar-right span {
+    font-style: italic;
+    font-size: 0.9em;
+    display: flex;
+    flex: 2;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}

@@ -1,0 +1,55 @@
+.app {
+  /* Centers the main */
+  display: flex;
+  justify-content: center;
+}
+
+.app a {
+  color: #08b2e3;
+  text-decoration: none;
+  font-weight: bolder;
+}
+
+.main {
+  margin-top: 5em;
+  /* Slims and centers the main content width */
+  width: 52.5em;
+  /* Centers content */
+  display: flex;
+  justify-content: center;
+}
+
+/* Fixes adjusting width in toolbar in small devices */
+.overflow-container {
+  overflow: hidden;
+}
+
+.card {
+  background: #323737;
+  width: 100%;
+  /* Shadows */
+  -webkit-box-shadow: 0em 0.5em 0.3125em 0em rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0em 0.5em 0.3125em 0em rgba(0, 0, 0, 0.1);
+  box-shadow: 0em 0.5em 0.3125em 0em rgba(0, 0, 0, 0.1);
+}
+
+/* Centers content vertically and horizontally*/
+.center-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.svg-circle {
+  background: #262b2b;
+  border-radius: 50%;
+  /* Shadows */
+  -webkit-box-shadow: 0em 0.5em 0.3125em 0em rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0em 0.5em 0.3125em 0em rgba(0, 0, 0, 0.1);
+  box-shadow: 0em 0.5em 0.3125em 0em rgba(0, 0, 0, 0.1);
+}
+
+.svg-shadow {
+  -webkit-filter: drop-shadow(0em 0.5em 0.3125em rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0em 0.5em 0.3125em rgba(0, 0, 0, 0.2));
+}
