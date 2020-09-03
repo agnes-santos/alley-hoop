@@ -82,9 +82,9 @@ module.exports = function (env, argv) {
         'process.env.NODE_ENV': JSON.stringify(isProduction ? 'production' : 'development'),
       }),
       new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, 'public/index.html'),
+        template: path.resolve(__dirname, './src/index.html'),
         inject: true,
-        favicon: './public/favicon.ico',
+        favicon: './src/favicon.ico',
       }),
       // new CompressionPlugin({
       //   deleteOriginalAssets: true,
