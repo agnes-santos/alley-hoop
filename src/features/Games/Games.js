@@ -2,7 +2,7 @@ import React from 'react';
 import Loader from '../../components/Loader/Loader';
 import nbaTeams from '../../utils/nbaTeams';
 import Game from './Game';
-import db from '../../utils/db.js';
+import { db } from '../../utils/fb.js';
 
 // Animation
 import { motion } from 'framer-motion';
