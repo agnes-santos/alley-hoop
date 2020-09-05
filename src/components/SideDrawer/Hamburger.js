@@ -9,7 +9,12 @@ const Hamburger = (props) => {
   }
 
   return (
-    <button className={burgerClass.join(' ')} type="button" onClick={props.onSideDrawerToggle}>
+    <button
+      className={burgerClass.join(' ')}
+      type="button"
+      onClick={props.onSideDrawerToggle}
+      aria-label="hamburger"
+    >
       <span className="hamburger-box">
         <span className="hamburger-inner"></span>
       </span>
