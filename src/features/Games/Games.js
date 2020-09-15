@@ -56,6 +56,8 @@ export default class Games extends React.Component {
       return <Loader />;
     } else if (error) {
       return <div>{error}</div>;
+    } else if (!games) {
+      return <div className="no-games">No games scheduled today.</div>;
     } else {
       return (
         <motion.div
