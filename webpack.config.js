@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
@@ -90,6 +91,9 @@ module.exports = function (env, argv) {
       // new CompressionPlugin({
       // deleteOriginalAssets: true,
       // }),
+      new CopyPlugin({
+        patterns: [{ from: 'public', to: '' }],
+      }),
       new CleanWebpackPlugin(),
       // new BundleAnalyzerPlugin(),
     ].filter(Boolean),

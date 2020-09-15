@@ -5,6 +5,7 @@ import './App.css';
 // Components
 import Toolbar from '../components/Toolbar/Toolbar';
 import SideDrawer from '../components/SideDrawer/SideDrawer';
+import Analytics from '../components/Analytics/Analytics';
 
 // Features
 import Games from '../features/Games/Games';
@@ -26,6 +27,7 @@ class App extends React.Component {
 
     return (
       <Router>
+        <Analytics />
         <div className="app">
           <Toolbar
             onSideDrawerToggle={this.handleSideDrawerToggle}

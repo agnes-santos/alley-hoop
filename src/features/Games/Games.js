@@ -2,7 +2,7 @@ import React from 'react';
 import Loader from '../../components/Loader/Loader';
 import nbaTeams from '../../utils/nbaTeams';
 import Game from './Game';
-import db from '../../utils/db.js';
+import { db } from '../../utils/fb.js';
 
 // Animation
 import { motion } from 'framer-motion';
@@ -56,6 +56,8 @@ export default class Games extends React.Component {
       return <Loader />;
     } else if (error) {
       return <div>{error}</div>;
+    } else if (!games) {
+      return <div className="no-games">No games scheduled today.</div>;
     } else {
       return (
         <motion.div

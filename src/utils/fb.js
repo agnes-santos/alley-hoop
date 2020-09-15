@@ -1,5 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/database';
+import 'firebase/analytics';
 const fbConfig = {
   apiKey: 'AIzaSyDYSuC9NSZLvz5X1jUZfRPWSBifr1sJfDk',
   authDomain: 'alley-hoop.firebaseapp.com',
@@ -12,5 +13,5 @@ const fbConfig = {
 };
 
 const fb = firebase.initializeApp(fbConfig);
-const db = fb.database();
-export default db;
+export const db = fb.database();
+export const analytics = fb.analytics();
