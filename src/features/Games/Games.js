@@ -16,11 +16,34 @@ export default class Games extends React.Component {
     isLoading: true,
     games: [],
     error: null,
+    logosLoaded: 0,
   };
+
+  handleLogoOnLoad() {
+    let { logosLoaded } = this.state;
+    logosLoaded++;
+    this.setState({
+      logosLoaded: logosLoaded,
+    });
+  }
+
+  handleLoadLogo(team) {
+    const logo = new Image();
+    logo.src = nbaTeams[team].imgSrc;
+    logo.onload = () => this.handleLogoOnLoad(team);
+  }
 
   componentDidMount() {
     // Page title
     document.title = 'Alley Hoop : Games Today';
+
+    // Pre-loads the NBA logos svg of teams playing
+    this.games.once('value').then((snapshot) => {
+      snapshot.val().forEach(({ vTeam, hTeam }) => {
+        this.handleLoadLogo(hTeam.triCode);
+        this.handleLoadLogo(vTeam.triCode);
+      });
+    });
 
     // Sets games to realtime data in firebase
     this.games.on('value', (snap) => {
@@ -33,8 +56,8 @@ export default class Games extends React.Component {
   }
 
   render() {
-    const { isLoading, games, error } = this.state;
-    if (isLoading) {
+    const { isLoading, games, error, logosLoaded } = this.state;
+    if (isLoading || logosLoaded < games.length * 2) {
       return <Loader />;
     } else if (error) {
       return <div>{error}</div>;
