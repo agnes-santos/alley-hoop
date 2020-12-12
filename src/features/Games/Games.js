@@ -14,30 +14,35 @@ export default class Games extends React.Component {
 
   state = {
     isLoading: true,
-    teamLogosLoading: Object.keys(nbaTeams),
     games: [],
     error: null,
+    logosLoaded: 0,
   };
 
-  handleLogoOnLoad(team) {
-    const { teamLogosLoading } = this.state;
-    teamLogosLoading.splice(teamLogosLoading.indexOf(team), 1);
+  handleLogoOnLoad() {
+    let { logosLoaded } = this.state;
+    logosLoaded++;
     this.setState({
-      teamLogosLoading: teamLogosLoading,
+      logosLoaded: logosLoaded,
     });
+  }
+
+  handleLoadLogo(team) {
+    const logo = new Image();
+    logo.src = nbaTeams[team].imgSrc;
+    logo.onload = () => this.handleLogoOnLoad(team);
   }
 
   componentDidMount() {
     // Page title
     document.title = 'Alley Hoop : Games Today';
 
-    // Pre-loads the NBA logos svg
-    Object.keys(nbaTeams).forEach((team) => {
-      const logo = new Image();
-      logo.src = nbaTeams[team].imgSrc;
-      logo.onload = () => {
-        this.handleLogoOnLoad(team);
-      };
+    // Pre-loads the NBA logos svg of teams playing
+    this.games.once('value').then((snapshot) => {
+      snapshot.val().forEach(({ vTeam, hTeam }) => {
+        this.handleLoadLogo(hTeam.triCode);
+        this.handleLoadLogo(vTeam.triCode);
+      });
     });
 
     // Sets games to realtime data in firebase
@@ -51,8 +56,8 @@ export default class Games extends React.Component {
   }
 
   render() {
-    const { isLoading, teamLogosLoading, games, error } = this.state;
-    if (isLoading || teamLogosLoading.length) {
+    const { isLoading, games, error, logosLoaded } = this.state;
+    if (isLoading || logosLoaded < games.length * 2) {
       return <Loader />;
     } else if (error) {
       return <div>{error}</div>;
