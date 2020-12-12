@@ -14,31 +14,13 @@ export default class Games extends React.Component {
 
   state = {
     isLoading: true,
-    teamLogosLoading: Object.keys(nbaTeams),
     games: [],
     error: null,
   };
 
-  handleLogoOnLoad(team) {
-    const { teamLogosLoading } = this.state;
-    teamLogosLoading.splice(teamLogosLoading.indexOf(team), 1);
-    this.setState({
-      teamLogosLoading: teamLogosLoading,
-    });
-  }
-
   componentDidMount() {
     // Page title
     document.title = 'Alley Hoop : Games Today';
-
-    // Pre-loads the NBA logos svg
-    Object.keys(nbaTeams).forEach((team) => {
-      const logo = new Image();
-      logo.src = nbaTeams[team].imgSrc;
-      logo.onload = () => {
-        this.handleLogoOnLoad(team);
-      };
-    });
 
     // Sets games to realtime data in firebase
     this.games.on('value', (snap) => {
@@ -51,8 +33,8 @@ export default class Games extends React.Component {
   }
 
   render() {
-    const { isLoading, teamLogosLoading, games, error } = this.state;
-    if (isLoading || teamLogosLoading.length) {
+    const { isLoading, games, error } = this.state;
+    if (isLoading) {
       return <Loader />;
     } else if (error) {
       return <div>{error}</div>;
