@@ -1,7 +1,6 @@
 const score = (props) => {
-  const { isGameActivated, score } = props;
-
-  return isGameActivated && !score ? '-' : score;
+  const { status, score } = props;
+  return status === 1 ? '-' : score;
 };
 
 export default score;

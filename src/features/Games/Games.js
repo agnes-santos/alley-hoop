@@ -39,9 +39,9 @@ export default class Games extends React.Component {
 
     // Pre-loads the NBA logos svg of teams playing
     this.games.once('value').then((snapshot) => {
-      snapshot.val().forEach(({ vTeam, hTeam }) => {
-        this.handleLoadLogo(hTeam.triCode);
-        this.handleLoadLogo(vTeam.triCode);
+      snapshot.val().forEach(({ homeTeam, awayTeam }) => {
+        this.handleLoadLogo(homeTeam.triCode);
+        this.handleLoadLogo(awayTeam.triCode);
       });
     });
 
@@ -76,10 +76,10 @@ export default class Games extends React.Component {
         >
           {games.map((game) => {
             // SVG logo srcs
-            game.hTeam.imgSrc = nbaTeams[game.hTeam.triCode].imgSrc;
-            game.vTeam.imgSrc = nbaTeams[game.vTeam.triCode].imgSrc;
+            game.homeTeam.imgSrc = nbaTeams[game.homeTeam.triCode].imgSrc;
+            game.awayTeam.imgSrc = nbaTeams[game.awayTeam.triCode].imgSrc;
 
-            return <Game game={game} key={game.gameId} />;
+            return <Game game={game} key={game.id} />;
           })}
         </motion.div>
       );
